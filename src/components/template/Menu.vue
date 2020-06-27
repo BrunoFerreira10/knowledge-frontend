@@ -70,8 +70,8 @@ export default {
     height: 100%;
   }
 
-  .menu a,
-  .menu a:hover {
+  .menu .tree-anchor,
+  .menu .tree-anchor:hover {
     color: #FFF;
     text-decoration: none;
   }
