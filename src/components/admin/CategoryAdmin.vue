@@ -55,7 +55,7 @@
     </b-form>
     
     <b-table hover striped :items="modelList" :fields="fields">
-      <template slot="actions" slot-scope="data">
+      <template v-slot:cell(actions)="data">
         <div class="action-buttons">
           <b-button variant="warning" @click="loadModelItem(data.item, 'edit')">
             <i class="fa fa-pencil"></i>

@@ -80,7 +80,7 @@
     </b-form>
 
     <b-table hover striped :items="users" :fields="fields">
-      <template slot="actions" slot-scope="data">
+      <template v-slot:cell(actions)="data">
         <div class="actions-buttons">
           <b-button class="mr-2" variant="warning" @click="loadUser(data.item, 'edit')">
             <i class="fa fa-pencil"></i>
