@@ -200,7 +200,7 @@ export default {
       const url = `${baseApiUrl}/articles${id}`      
       
       axios[method](url, this.article)
-        .then(res => {
+        .then(() => {
           this.$toasted.global.defaultSuccess()
           this.reset()
         })

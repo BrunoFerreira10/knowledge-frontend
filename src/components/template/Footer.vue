@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <span>Copyright <strong>mun-dev</strong> © 2020 | Implemented by Bruno Ferreira</span>  
+    <span>Copyright <strong>mun-dev</strong> © 2020</span>  
   </footer>
 </template>
 
@@ -17,7 +17,7 @@ export default {
 
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     padding-right: 10px;
   }
 </style>

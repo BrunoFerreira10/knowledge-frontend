@@ -2,8 +2,8 @@
 <div class="article-item">
   <router-link :to="{name: 'articleById', params: { id: article.id }}">
     <div class="article-item-image" d-none d-sm-block>
-      <img alt="Article" v-if="article.imageUrl" :src="article.imageUrl" height="150" width="150">
-      <img src="@/assets/article.png" alt="Article" height="150" width="150" v-else>
+      <b-img alt="Article" v-if="article.imageUrl" :src="article.imageUrl" fluid-grow/>
+      <b-img src="@/assets/article.png" alt="Article" fluid-grow v-else />
     </div>
     <div class="article-item-info">
       <h2>{{ article.name }}</h2>
@@ -46,13 +46,18 @@ export default {
   }
 
   .article-item-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding-right: 20px;
     margin-right: 20px;
     border-right: 1px solid #AAA;
+    width: 150px;
+    height: 100px;
   }
 
   .article-item-image img {
-    border-radius: 5px;
+    border-radius: 5px;    
   }
 
   .article-item-info{
@@ -71,7 +76,7 @@ export default {
       flex-direction: column;        
     }
 
-    .article-item-image {
+    .article-item-image {      
       border-right: 0px;
       border-bottom: 1px solid #AAA;
       padding-right: 0px;
@@ -80,9 +85,9 @@ export default {
       height: 100%;
     }
 
-    .article-item-image img {
-      width: 100%;
-      height: 100%;
+    .article-item-image img {      
+      min-height: 100px;
+      margin-bottom: 10px;
     }
 
     .article-item-info h2 {
