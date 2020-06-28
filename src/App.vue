@@ -2,7 +2,7 @@
   <div id="app" :class="{'hide-menu': !isMenuVisible || !user}">
     <Header title="Knowledge base" :hideToggle="!user" :hideUserDropdown="!user"></Header>
     <Menu v-if="user"></Menu>
-    <Loading v-if="validatingToken"></Loading>
+    <Loading v-if="isValidatingToken"></Loading>
     <Content v-else></Content>
     <Footer></Footer>
   </div>
@@ -10,10 +10,11 @@
 
 <script>
 // @ is the src path
+import Vue from 'vue'
 import axios from 'axios'
 import { baseApiUrl, userKey } from '@/global'
 
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import Header from "@/components/template/Header"
 import Menu from "@/components/template/Menu"
 import Content from "./components/template/Content"
@@ -23,44 +24,19 @@ import Loading from "./components/template/Loading"
 export default {
   name: "App",
   components: { Header, Menu, Content, Footer, Loading },
-  computed: mapState(['isMenuVisible', 'user']),
+  computed: {
+    ...mapState(['isMenuVisible', 'user','isValidatingToken'])
+  },
   data: function () {
-    return {
-      validatingToken: true
+    return {      
     }
   },
   methods: {
-    async validateToken() {
-      this.validatingToken = true
-
-      const json = localStorage.getItem(userKey)
-      const userData = JSON.parse(json)
-      this.$store.commit('setUser', null)
-
-      if (!userData) {
-        this.validatingToken = false
-        //this.$router.push({name: 'auth'})
-        //return
-        //  OR
-        return this.$router.push({ name: 'auth' })
-      }
-
-      const res = await axios.post(`${baseApiUrl}/validateToken`, userData)
-      if (res.data) {
-        this.$store.commit('setUser', userData)
-        if (this.$mq === 'xs' || this.$mq === 'sm') {
-          this.$store.commit('toggleMenu', false)
-        }
-      } else {
-        localStorage.removeItem(userKey)
-        this.$router.push({ name: 'auth' })
-      }
-
-      this.validatingToken = false
-    }
+    ...mapActions(['validateToken']),
+    
   },
-  created() {
-    this.validateToken()
+  created() {        
+    this.validateToken(this.$router)
   }
 };
 </script>

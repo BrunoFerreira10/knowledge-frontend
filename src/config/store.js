@@ -1,13 +1,16 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import { userKey, baseApiUrl } from '@/global'
+
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     isMenuVisible: false,
-    user: null
+    user: null,
+    isValidatingToken: true,    
   },
   mutations: {
     toggleMenu(state, isVisible) {
@@ -27,6 +30,7 @@ export default new Vuex.Store({
       state.user = user
       if(user){
         axios.defaults.headers.common['Authorization'] = `bearer ${user.token}`
+        
         if (this.$mq === 'lg' || this.$mq === 'xg')
           state.isMenuVisible = true
         else  
@@ -35,6 +39,40 @@ export default new Vuex.Store({
         delete axios.defaults.headers.common['Authorization']
         state.isMenuVisible = false
       }
-    }  
+    },
+    setValidatingToken(state, isValidating){
+      state.isValidatingToken = isValidating
+    }     
+  },
+  actions: {
+    async validateToken(context, router) {            
+
+      context.commit('setValidatingToken', true)
+
+      const json = localStorage.getItem(userKey)
+      const userData = JSON.parse(json)
+      //this.$store.commit('setUser', null)
+      context.commit('setUser', null)
+      
+      if (!userData) {
+        context.commit('setValidatingToken', false)            
+        if(!router.history.current.name.startsWith('auth'))
+          router.push({ name: 'auth' })
+        return 
+      }
+
+      const res = await axios.post(`${baseApiUrl}/validateToken`, userData)
+      if (res.data) {
+        context.commit('setUser', userData)
+        if (this.$mq === 'xs' || this.$mq === 'sm') {
+          context.commit('toggleMenu', false)
+        }
+      } else {
+        localStorage.removeItem(userKey)
+        router.push({ name: 'auth' })
+      }
+
+      context.commit('setValidatingToken', false)
+    }
   }
 })
