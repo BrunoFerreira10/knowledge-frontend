@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
 export const userKey = '__knowledge_user'
-export const baseApiUrl = 'https://knowledge-base-br.herokuapp.com'
+export const baseApiUrl = process.env.NODE_ENV == 'test-local' ? 'http://localhost:3000' : 'https://knowledge-base-br.herokuapp.com'
 
 export function showError(err) {
   // console.log(err.response)

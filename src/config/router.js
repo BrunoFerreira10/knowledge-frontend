@@ -16,7 +16,7 @@ const routes = [
     name: 'home',
     path: '/',
     component: Home,
-    meta: { requiresLogin: true }
+    meta: { requiresLogin: false }
   },
   {
     name: 'adminPages',
@@ -50,14 +50,8 @@ router.beforeEach((to, from, next) => {
   const json = localStorage.getItem(userKey)  
 
   if(to.matched.some(record => record.meta.requiresLogin)){
-    const user = JSON.parse(json)        
-    
-    if(user) {      
-      next()
-    } else {      
-      next({ path: '/auth' })
-    }    
-
+    const user = JSON.parse(json)            
+    user ? next() : next({ path: '/auth' })    
   } else {
     next()
   }

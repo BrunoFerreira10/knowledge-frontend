@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve-local": "env NODE_ENV=test-local vue-cli-service serve",
+    "serve-remote": "env NODE_ENV=test-remote vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },

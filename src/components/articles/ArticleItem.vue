@@ -3,7 +3,7 @@
   <router-link :to="{name: 'articleById', params: { id: article.id }}">
     <div class="article-item-image" d-none d-sm-block>
       <b-img alt="Article" v-if="article.imageUrl" :src="article.imageUrl" fluid-grow/>
-      <b-img src="@/assets/article.png" alt="Article" fluid-grow v-else />
+      <b-img :src="require('@/assets/article.png')" alt="Article" fluid-grow v-else />
     </div>
     <div class="article-item-info">
       <h2>{{ article.name }}</h2>
