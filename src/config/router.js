@@ -49,7 +49,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   const json = localStorage.getItem(userKey)  
-  console.log(router)
+  
   if(to.matched.some(record => record.meta.requiresLogin)){
     const user = JSON.parse(json)            
     user ? next() : next({ path: '/auth' })    

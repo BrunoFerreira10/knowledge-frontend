@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-import { userKey, baseApiUrl } from '@/global'
+import { userKey, baseApiUrl, setUserFromLocalStorage } from '../global'
 
 
 Vue.use(Vuex)
@@ -15,7 +15,7 @@ export default new Vuex.Store({
     user: null,
   },
   mutations: {
-    toggleMenu(state, isVisible) {
+    toggleMenu(state, isVisible) {      
       if(isVisible === undefined) {
         state.isMenuVisible = !state.isMenuVisible
       } else {
@@ -53,7 +53,7 @@ export default new Vuex.Store({
 
       const json = localStorage.getItem(userKey)
       const userData = JSON.parse(json)
-      
+            
       context.commit('setUser', null)
       
       if (!userData) {
@@ -62,13 +62,10 @@ export default new Vuex.Store({
           router.push({ name: 'auth' })
         return 
       }
-
-      const res = await axios.post(`${baseApiUrl}/validateToken`, userData)
+      
+      const res = await axios.post(`${baseApiUrl}/validateToken`, userData)      
       if (res.data) {
-        context.commit('setUser', userData)
-        if (this.$mq === 'xs' || this.$mq === 'sm') {
-          context.commit('toggleMenu', false)
-        }
+        context.commit('setUser', userData)        
       } else {
         localStorage.removeItem(userKey)
         router.push({ name: 'auth' })

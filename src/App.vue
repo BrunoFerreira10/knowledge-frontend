@@ -36,8 +36,8 @@ export default {
     
   },
   created() {    
-    if(this.user)    
-      this.validateToken(this.$router)
+    //if(this.user)    
+      this.validateToken()
   }
 };
 </script>

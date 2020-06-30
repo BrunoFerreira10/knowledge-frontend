@@ -1,9 +1,9 @@
 import Vue from 'vue'
 
-export const userKey = '__knowledge_user'
-export const baseApiUrl = process.env.NODE_ENV == 'test-local' ? 'http://localhost:3000' : 'https://knowledge-base-br.herokuapp.com'
+const userKey = '__knowledge_user'
+const baseApiUrl = process.env.NODE_ENV == 'test-local' ? 'http://localhost:3000' : 'https://knowledge-base-br.herokuapp.com'
 
-export function showError(err) {
+function showError(err) {
   // console.log(err.response)
   if(err && err.response && err.response.data && err.response.data.statusText) {    
     // console.log("A1")
@@ -20,8 +20,8 @@ export function showError(err) {
   }
 }
 
-export default {
+export {
   baseApiUrl,
   showError,
-  userKey
+  userKey  
 }
