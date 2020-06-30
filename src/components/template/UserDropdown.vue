@@ -1,5 +1,5 @@
 <template>
-  <div class="user-dropdown">
+  <div v-if="user" class="user-dropdown">
     <div class="user-button">
       <span class="d-none d-sm-block">{{ user.name }}</span>
       <div class="user-dropdown-img">
@@ -16,6 +16,17 @@
       </a>
     </div>
   </div>
+
+  <div v-else class="login-pane">
+    <router-link to="/auth" class="login-button">
+      <i class="fa fa-user"></i>
+      <span >Register or Login</span>
+      <div class="user-dropdown-img">
+        <Gravatar email="be welcome!!!!!!" alt="User" />
+      </div>      
+    </router-link>    
+  </div>
+  
 </template>
 
 <script>
@@ -43,6 +54,8 @@ export default {
   height: 100%;
 }
 
+.login-button,
+.login-button:hover,
 .user-button {
   display: flex;
   align-items: center;
@@ -50,6 +63,10 @@ export default {
   font-weight: 100;
   height: 100%;
   padding: 0px 20px;
+}
+
+.login-button > span {
+  margin-left: 10px;
 }
 
 .user-button:hover {

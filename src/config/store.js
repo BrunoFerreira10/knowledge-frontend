@@ -8,18 +8,14 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    isMenuVisible: false,
+    isMenuToggleButtonVisible: true,
+    isDropdownMenuVisible: true,
+    isMenuVisible: true,    
+    isValidatingToken: false,    
     user: null,
-    isValidatingToken: true,    
   },
   mutations: {
     toggleMenu(state, isVisible) {
-
-      if(!state.user){
-        state.isMenuVisible = false
-        return
-      }
-
       if(isVisible === undefined) {
         state.isMenuVisible = !state.isMenuVisible
       } else {
@@ -42,7 +38,13 @@ export default new Vuex.Store({
     },
     setValidatingToken(state, isValidating){
       state.isValidatingToken = isValidating
-    }     
+    },
+    setMenuToggleButtonVisible(state, isVisible){
+      state.isMenuToggleButtonVisible = isVisible
+    },
+    setDropdownMenuVisible(state, isVisible){
+      state.isDropdownMenuVisible = isVisible
+    } 
   },
   actions: {
     async validateToken(context, router) {            
@@ -51,7 +53,7 @@ export default new Vuex.Store({
 
       const json = localStorage.getItem(userKey)
       const userData = JSON.parse(json)
-      //this.$store.commit('setUser', null)
+      
       context.commit('setUser', null)
       
       if (!userData) {

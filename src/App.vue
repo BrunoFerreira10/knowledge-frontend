@@ -1,7 +1,7 @@
 <template>
-  <div id="app" :class="{'hide-menu': !isMenuVisible || !user}">
-    <Header title="Knowledge base" :hideToggle="!user" :hideUserDropdown="!user"></Header>
-    <Menu v-if="user"></Menu>
+  <div id="app" :class="{'hide-menu': !isMenuVisible}">
+    <Header title="Knowledge base"></Header>
+    <Menu v-if="isMenuVisible"></Menu>
     <Loading v-if="isValidatingToken"></Loading>
     <Content v-else></Content>
     <Footer></Footer>
@@ -25,7 +25,7 @@ export default {
   name: "App",
   components: { Header, Menu, Content, Footer, Loading },
   computed: {
-    ...mapState(['isMenuVisible', 'user','isValidatingToken'])
+    ...mapState(['isMenuVisible', 'user','isValidatingToken', 'isToggleMenuButtonVisible'])
   },
   data: function () {
     return {      
@@ -35,8 +35,9 @@ export default {
     ...mapActions(['validateToken']),
     
   },
-  created() {        
-    this.validateToken(this.$router)
+  created() {    
+    if(this.user)    
+      this.validateToken(this.$router)
   }
 };
 </script>

@@ -8,6 +8,7 @@ import ArticleById from '../components/articles/ArticleById'
 import Auth from '../components/auth/Auth'
 
 import { userKey } from '@/global'
+import store from './store'
 
 Vue.use(VueRouter)
 
@@ -48,7 +49,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   const json = localStorage.getItem(userKey)  
-
+  console.log(router)
   if(to.matched.some(record => record.meta.requiresLogin)){
     const user = JSON.parse(json)            
     user ? next() : next({ path: '/auth' })    
@@ -58,10 +59,19 @@ router.beforeEach((to, from, next) => {
 
   if(to.matched.some(record => record.meta.requiresAdmin)){
     const user = JSON.parse(json)
-        user && user.admin ? next() : next({path: '/'})
+        user && user.admin ? next() : next({path: '/auth'})
   } else {
     next()
   }
+
+  if(router.history.current.name.startsWith('auth')){
+    store.commit('setMenuToggleButtonVisible', false)    
+    store.commit('setDropdownMenuVisible', false)
+    store.commit('toggleMenu', false)
+  } else {
+    store.commit('setMenuToggleButtonVisible', true)    
+    store.commit('setDropdownMenuVisible', true)    
+  }  
   
 })
 

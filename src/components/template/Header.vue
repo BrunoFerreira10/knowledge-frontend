@@ -1,12 +1,12 @@
 <template>
   <header class="header">
-    <a class="toggle" @click="toggleMenu" v-if="!hideToggle">
+    <a class="toggle" @click="toggleMenu" v-if="isMenuToggleButtonVisible">
       <i class="fa fa-lg" :class="icon"></i>
     </a>
     <h1 class="title">
-      <router-link :to="user ? '/' : '/'"> {{ title }} </router-link>
+      <router-link :to="'/'"> {{ title }} </router-link>
     </h1>
-    <UserDropdown v-if="!hideUserDropdown" />
+    <UserDropdown v-if="isDropdownMenuVisible" />
   </header>
 </template>
 
@@ -20,23 +20,23 @@ export default {
     UserDropdown
   },
   props: {
-    title: String,
-    hideToggle: Boolean,
-    hideUserDropdown: Boolean
+    title: String    
   },
   computed: {
+    ...mapState([
+      'user',
+      'isMenuToggleButtonVisible',
+      'isDropdownMenuVisible',
+      'isMenuVisible'
+    ]),
     icon() {      
-      return  this.$store.state.isMenuVisible ? "fa-angle-left" : "fa-angle-down"
-    },
-    ...mapState(["user"])
+      return  this.isMenuVisible ? "fa-angle-left" : "fa-angle-down"
+    }    
   },
   methods: {
     toggleMenu() {
       this.$store.commit('toggleMenu')
     }    
-  },
-  mounted() {
-    //this.$store.state.isMenuVisible = false
   }
 };
 </script>

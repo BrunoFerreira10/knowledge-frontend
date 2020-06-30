@@ -4,7 +4,7 @@ const success = res => res
 
 const error = err => {
   if(401 === err.response.status){
-    window.location = '/'    
+    window.location = '/auth'    
   } else {
     return Promise.reject(err)
   }
