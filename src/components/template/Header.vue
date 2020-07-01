@@ -8,7 +8,7 @@
         <router-link :to="'/'"> {{ title }} </router-link>
       </h1>
     </div>    
-    <UserDropdown v-if="isDropdownMenuVisible" />
+    <UserDropdown v-if="isDropdownMenuVisible" class="drop-menu"/>
   </header>
 </template>
 
@@ -95,11 +95,15 @@ header.header > a.toggle {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 
 header.header > a.toggle:hover {
   color: #fff;
   background-color: rgba(0, 0, 0, 0.2);
+}
+.drop-menu {
+  z-index: 1;
 }
 
 
