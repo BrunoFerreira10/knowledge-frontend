@@ -33,7 +33,7 @@ export default {
   name: 'Auth',
   data: function() {
     return{
-      showSignup: true,
+      showSignup: false,
       user:{}
     }
   },
