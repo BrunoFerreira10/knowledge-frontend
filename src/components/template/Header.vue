@@ -3,9 +3,11 @@
     <a class="toggle" @click="toggleMenu" v-if="isMenuToggleButtonVisible">
       <i class="fa fa-lg" :class="icon"></i>
     </a>
-    <h1 class="title">
-      <router-link :to="'/'"> {{ title }} </router-link>
-    </h1>
+    <div class="overlap">
+      <h1 class="title">
+        <router-link :to="'/'"> {{ title }} </router-link>
+      </h1>
+    </div>    
     <UserDropdown v-if="isDropdownMenuVisible" />
   </header>
 </template>
@@ -47,7 +49,7 @@ export default {
   background: linear-gradient(to right, #03588C, #006bb5);
 
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 
   position: fixed;
@@ -56,11 +58,20 @@ export default {
   z-index: 1;
 }
 
+.overlap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .title {
   font-size: 1.2rem;
   color: #fff;
   font-weight: 100;
-  flex-grow: 1;
+  /* flex-grow: 1; */
   text-align: center;
 }
 
