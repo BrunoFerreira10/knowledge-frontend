@@ -63,6 +63,9 @@ export default {
         })
         .catch(showError)
     }
+  },
+  mounted() {
+    window.scrollTo(0, 1)
   }
 }
 </script>
