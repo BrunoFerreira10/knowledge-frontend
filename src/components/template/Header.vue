@@ -5,7 +5,7 @@
     </a>
     <div class="overlap">
       <h1 class="title">
-        <router-link :to="'/'"> {{ title }} </router-link>
+        <router-link :to="'/'"> {{ $t("message.appTitle") }} </router-link>
       </h1>
     </div>    
     <UserDropdown v-if="isDropdownMenuVisible" class="drop-menu"/>

@@ -9,6 +9,7 @@ import './config/axios'
 import './config/mq'
 import store from  './config/store'
 import router from  './config/router'
+import i18n from './config/i18n'
 
 
 Vue.config.productionTip = false
@@ -18,6 +19,7 @@ Vue.config.productionTip = false
 
 new Vue({
   store,
-  router,  
+  router,
+  i18n,
   render: h => h(App)
 }).$mount('#app')

@@ -21,7 +21,7 @@
     <router-link to="/auth" class="login-button">
       <i class="fa fa-user login-icon-xs d-none d-sm-block"></i>
       <i class="fa fa-user login-icon-gtxs d-block d-sm-none"></i>
-      <span class="d-none d-sm-block">Register or Login</span>  
+      <span class="d-none d-sm-block"> {{ $t('message.registerOrLogin') }}</span>  
       <div class="user-dropdown-img d-none d-sm-block" >
         <Gravatar email="be welcome!!!!!!" alt="User" />
       </div>      

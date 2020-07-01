@@ -36,8 +36,10 @@ export default {
     
   },
   created() {    
-    //if(this.user)    
+    //if(this.user)  
       this.validateToken()
+      console.log('l = ',localStorage.getItem('__user_lang'))
+      console.log(this.$i18n.locale)
   }
 };
 </script>

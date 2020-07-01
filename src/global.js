@@ -20,8 +20,13 @@ function showError(err) {
   }
 }
 
+function getLang() {
+  
+}
+
 export {
   baseApiUrl,
   showError,
-  userKey  
+  userKey,
+  getLang 
 }

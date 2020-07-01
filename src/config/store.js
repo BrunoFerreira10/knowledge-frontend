@@ -13,6 +13,7 @@ export default new Vuex.Store({
     isMenuVisible: true,    
     isValidatingToken: false,    
     user: null,
+    lang: 'us'
   },
   mutations: {
     toggleMenu(state, isVisible) {      

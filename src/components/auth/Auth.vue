@@ -20,17 +20,25 @@
         <span v-if="showSignup">Already registered? Access login!</span>
         <span v-else>Not registered? Register here!</span>
       </a>
-      
+      <div class="lang">
+        <a @click.prevent="()=>setLang('us')" ><country-flag country='us' /></a>
+        <a @click.prevent="()=>setLang('br')" ><country-flag country='br' /></a>
+        <a @click.prevent="()=>setLang('de')" ><country-flag country='de' /></a>        
+      </div>            
     </div>
   </div>
 </template>
 
 <script>
+import CountryFlag from 'vue-country-flag'
 import { baseApiUrl, showError, userKey } from '@/global'
 import axios from 'axios'
 
 export default {
   name: 'Auth',
+  components: {
+    CountryFlag
+  },
   data: function() {
     return{
       showSignup: false,
@@ -62,10 +70,18 @@ export default {
           this.showSignup = false
         })
         .catch(showError)
+    },
+    setLang(lang) {
+      localStorage.setItem('__user_lang', lang)
+      location.reload()
+      
     }
   },
   mounted() {
     window.scrollTo(0, 1)
+  },
+  created() {
+    
   }
 }
 </script>
@@ -127,6 +143,10 @@ export default {
       rgba(120, 120, 120, 0),
       rgba(120, 120, 120, 0.75),
       rgba(120, 120, 120, 0));
+  }
+
+  .lang {
+    margin-top: 10px;
   }
 
 </style>
