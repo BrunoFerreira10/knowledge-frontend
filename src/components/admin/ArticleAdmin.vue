@@ -3,7 +3,7 @@
 
     <b-row>
       <b-col xs="12">
-        <b-button v-if="mode === 'list'" variant="primary" @click="mode = 'save'">New</b-button>        
+        <b-button v-if="mode === 'list'" variant="primary" @click="mode = 'save'">{{ $t('message.Add') }}</b-button>        
       </b-col>
     </b-row>
 
@@ -12,7 +12,7 @@
 
       <b-row>
         <b-col xs="12">          
-          <b-form-group label="Name" label-for="article-name">
+          <b-form-group :label="$t('message.Name')" label-for="article-name">
             <b-form-input              
               :readonly="mode === 'remove'"
               id="article-name"
@@ -25,7 +25,7 @@
       
       <b-row>
         <b-col xs="12">          
-          <b-form-group label="Description" label-for="article-description">
+          <b-form-group :label="$t('message.Description')" label-for="article-description">
             <b-form-input              
               :readonly="mode === 'remove'"
               id="article-description"
@@ -38,7 +38,7 @@
       
       <b-row>
         <b-col xs="12">          
-          <b-form-group label="Image (URL)" label-for="article-image">
+          <b-form-group :label="$t('message.Image')+' (URL)'" label-for="article-image">
             <b-form-input              
               :readonly="mode === 'remove'"
               id="article-image"
@@ -51,7 +51,7 @@
 
       <b-row>
         <b-col xs="12">
-          <b-form-group label="Category" label-for="article-category">
+          <b-form-group :label="$t('message.Category')" label-for="article-category">
             <b-form-select v-if="mode === 'save'"
               id="article-category"              
               v-model="article.categorieId"
@@ -69,7 +69,7 @@
 
       <b-row>
         <b-col xs="12">
-          <b-form-group label="Author" label-for="article-user">
+          <b-form-group :label="$t('message.Author')" label-for="article-user">
             <b-form-select v-if="mode === 'save'"
               id="article-user"              
               v-model="article.userId"
@@ -87,8 +87,8 @@
 
       <b-row>
         <b-col xs="12">
-          <b-form-group label="Contents" label-for="article-content">
-            <VueEditor v-model="article.content" placeholder="Enter article contents..." :disabled="mode === 'remove'">
+          <b-form-group :label="$t('message.Contents')" label-for="article-content">
+            <VueEditor v-model="article.content" :placeholder="$t('message.EnterArticleContents')" :disabled="mode === 'remove'">
             </VueEditor>
           </b-form-group>
         </b-col>
@@ -97,10 +97,10 @@
 
       <b-row>
         <b-col xs="12">
-          <b-button v-if="mode === 'save'" variant="primary" @click="save">Save</b-button>
-          <b-button v-if="mode === 'edit'" variant="primary" @click="save">Update</b-button>
-          <b-button v-if="mode === 'remove'" variant="danger" @click="remove">Delete</b-button>
-          <b-button variant="secondary" @click="reset" class="ml-2">Cancel</b-button>
+          <b-button v-if="mode === 'save'" variant="primary" @click="save">{{ $t('message.Save') }}</b-button>
+          <b-button v-if="mode === 'edit'" variant="primary" @click="save">{{ $t('message.Update') }}</b-button>
+          <b-button v-if="mode === 'remove'" variant="danger" @click="remove">{{ $t('message.Delete') }}</b-button>
+          <b-button variant="secondary" @click="reset" class="ml-2">{{ $t('message.Cancel') }}</b-button>
         </b-col>
       </b-row>
     </b-form>
@@ -174,7 +174,8 @@ export default {
       this.mode = mode
       axios.get(url)
         .then(res => {
-          this.article = res.data          
+          this.article = res.data  
+          document.documentElement.scrollTop = 0;        
         })
         .catch(showError)
       
@@ -193,6 +194,7 @@ export default {
       this.article = {},
       this.loadArticles()
       this.mode = 'list'
+      console.log(this)
     },
     save() {
       const method = this.article.id ? 'put' : 'post'
@@ -218,13 +220,12 @@ export default {
     setFields() {
       this.fields = this.$mq === 'xs' || this.$mq === 'sm'  ?
       [
-        { key: 'name', label: 'Name', sortable: true },        
-        { key: 'actions', label: 'Actions' }
-      ] : [
-        { key: 'id', label: 'Code', sortable: true },
-        { key: 'name', label: 'Name', sortable: true },
-        { key: 'description', label: 'Description', sortable: true},
-        { key: 'actions', label: 'Actions' }
+        { key: 'name', label: this.$i18n.t('message.Name'), sortable: true },        
+        { key: 'actions', label: this.$i18n.t('message.Actions') }
+      ] : [        
+        { key: 'name', label: this.$i18n.t('message.Name'), sortable: true },
+        { key: 'description', label: this.$i18n.t('message.Description'), sortable: true},
+        { key: 'actions', label: this.$i18n.t('message.Actions') }
       ]
     }
   },

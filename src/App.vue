@@ -1,6 +1,6 @@
 <template>
   <div id="app" :class="{'hide-menu': !isMenuVisible}">
-    <Header title="Knowledge base"></Header>
+    <Header :title="$t('message.appTitle')"></Header>
     <Menu v-if="isMenuVisible"></Menu>
     <Loading v-if="isValidatingToken"></Loading>
     <Content v-else></Content>
@@ -37,9 +37,7 @@ export default {
   },
   created() {    
     //if(this.user)  
-      this.validateToken()
-      console.log('l = ',localStorage.getItem('__user_lang'))
-      console.log(this.$i18n.locale)
+      this.validateToken()      
   }
 };
 </script>

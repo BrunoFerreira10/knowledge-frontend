@@ -3,7 +3,7 @@
 
     <b-row>
       <b-col xs="12">
-        <b-button v-if="mode === 'list'" variant="primary" @click="mode = 'save'">New</b-button>        
+        <b-button v-if="mode === 'list'" variant="primary" @click="mode = 'save'">{{ $t('message.Add') }}</b-button>        
       </b-col>
     </b-row>
 
@@ -12,13 +12,14 @@
 
       <b-row>
         <b-col xs="12">
-          <b-form-group label="Name" label-for="category-name">
+          <b-form-group :label="$t('message.Name')" label-for="category-name">
             <b-form-input
               :readonly="mode === 'remove'"
               id="category-name"
               type="text"
               v-model="modelItem.name"
               required
+              :placeholder="$t('message.Category')"
             ></b-form-input>
           </b-form-group>
         </b-col>
@@ -26,7 +27,7 @@
 
       <b-row>
         <b-col xs="12">
-          <b-form-group label="Category parent" label-for="category-parent">
+          <b-form-group :label="$t('message.CategoryParent')" label-for="category-parent">
             <b-form-select
               v-if="mode === 'save'"
               id="category-parent"
@@ -46,10 +47,10 @@
 
       <b-row>
         <b-col xs="12">
-          <b-button v-if="mode === 'save'" variant="primary" @click="save">Save</b-button>
-          <b-button v-if="mode === 'edit'" variant="primary" @click="save">Update</b-button>
-          <b-button v-if="mode === 'remove'" variant="danger" @click="remove">Delete</b-button>
-          <b-button variant="secondary" @click="reset" class="ml-2">Cancel</b-button>
+          <b-button v-if="mode === 'save'" variant="primary" @click="save">{{ $t('message.Save') }}</b-button>
+          <b-button v-if="mode === 'edit'" variant="primary" @click="save">{{ $t('message.Update') }}</b-button>
+          <b-button v-if="mode === 'remove'" variant="danger" @click="remove">{{ $t('message.Delete') }}</b-button>
+          <b-button variant="secondary" @click="reset" class="ml-2">{{ $t('message.Cancel') }}</b-button>
         </b-col>
       </b-row>
     </b-form>
@@ -89,7 +90,7 @@ export default {
       let list = this.modelList.map(item => {
         return { ...item, value: item.id, text: item.path }
       })
-      list = [{ value: null, text: "Select category parent..." }, ...list]
+      list = [{ value: null, text: this.$i18n.t('message.CategoryParent') }, ...list]
       return list
     }
   },
@@ -104,6 +105,7 @@ export default {
     loadModelItem(item, mode = 'save') {
       this.mode = mode
       this.modelItem = { ...item }
+      document.documentElement.scrollTop = 0;  
     },
     reset() {
       this.modelItem = { parentId: null },
@@ -134,13 +136,12 @@ export default {
     setFields() {
       this.fields = this.$mq === 'xs' || this.$mq === 'sm'  ?
         [
-          { key: 'path', label: 'Path', sortable: true },
-          { key: 'actions', label: 'Actions' }
+          { key: 'path', label: this.$i18n.t('message.Path'), sortable: true },
+          { key: 'actions', label: this.$i18n.t('message.Actions') }
         ] : [
-          { key: 'id', label: 'Code', sortable: true },
-          { key: 'name', label: 'Name', sortable: true },
-          { key: 'path', label: 'Path', sortable: true },
-          { key: 'actions', label: 'Actions' }
+          { key: 'name', label: this.$i18n.t('message.Name'), sortable: true },
+          { key: 'path', label: this.$i18n.t('message.Path'), sortable: true },
+          { key: 'actions', label: this.$i18n.t('message.Actions') }
         ]
     }
   },

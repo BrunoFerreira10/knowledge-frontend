@@ -1,17 +1,17 @@
 <template>
   <div class="admin">
-    <PageTitle icon="fa fa-cogs" title="System administration" subtitle="Registration and others">      
+    <PageTitle icon="fa fa-cogs" :title="$t('message.SystemAdministration')" :subtitle="$t('message.RegistrationAndOthers')">      
     </PageTitle>
     <div class="admin-pages-tabs">
       <b-card no-body>
         <b-tabs card>
-          <b-tab title="Articles" active>     
+          <b-tab :title="$t('message.Articles')" active>     
             <ArticleAdmin></ArticleAdmin>
           </b-tab>
-          <b-tab title="Categories">
+          <b-tab :title="$t('message.Categories')">
             <CategoryAdmin></CategoryAdmin>
           </b-tab>
-          <b-tab title="Users">
+          <b-tab :title="$t('message.Users')">
             <UserAdmin></UserAdmin>
           </b-tab>
         </b-tabs>

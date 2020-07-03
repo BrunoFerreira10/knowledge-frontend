@@ -3,7 +3,7 @@
 
     <b-row>
       <b-col xs="12">
-        <b-button v-if="mode === 'list'" variant="primary" @click="mode = 'save'">New</b-button>        
+        <b-button v-if="mode === 'list'" variant="primary" @click="mode = 'save'">{{ $t('message.Add') }}</b-button>        
       </b-col>
     </b-row>
 
@@ -12,14 +12,14 @@
 
       <b-row>
         <b-col md="6" sm="12">
-          <b-form-group label="Name:" label-for="user-name">
+          <b-form-group :label="$t('message.Name')" label-for="user-name">
             <b-form-input
               id="user-name"
               type="text"
               v-model="user.name"
               :readonly="mode === 'remove'"
               required
-              placeholder="Enter user name..."
+              :placeholder="$t('message.Name')"
             ></b-form-input>
           </b-form-group>
         </b-col>
@@ -31,7 +31,7 @@
               v-model="user.email"
               :readonly="mode === 'remove'"
               required
-              placeholder="Enter user E-mail..."
+              placeholder="E-mail..."
             ></b-form-input>
           </b-form-group>
         </b-col>
@@ -46,24 +46,24 @@
 
       <b-row v-show="mode === 'save'">
         <b-col md="6" sm="12">
-          <b-form-group label="Password:" label-for="user-password">
+          <b-form-group :label="$t('message.Password')" label-for="user-password">
             <b-form-input
               id="user-password"
               type="password"
               v-model="user.password"
               required
-              placeholder="Enter user password..."
+              :placeholder="$t('message.Password')"
             ></b-form-input>
           </b-form-group>
         </b-col>
         <b-col md="6" sm="12">
-          <b-form-group label="Confirm password:" label-for="user-confirm-password">
+          <b-form-group :label="$t('message.ConfirmPassword')" label-for="user-confirm-password">
             <b-form-input
               id="user-confirm-password"
               type="password"
               v-model="user.confirmPassword"
               required
-              placeholder="Confirm user password..."
+              :placeholder="$t('message.ConfirmPassword')"
             ></b-form-input>
           </b-form-group>
         </b-col>
@@ -71,10 +71,10 @@
 
       <b-row>
         <b-col xs="12">
-          <b-button v-if="mode === 'save'" variant="primary" @click="save">Save</b-button>
-          <b-button v-if="mode === 'edit'" variant="primary" @click="save">Update</b-button>
-          <b-button v-if="mode === 'remove'" variant="danger" @click="remove">Delete</b-button>
-          <b-button variant="secondary" @click="reset" class="ml-2">Cancel</b-button>
+          <b-button v-if="mode === 'save'" variant="primary" @click="save">{{ $t('message.Save') }}</b-button>
+          <b-button v-if="mode === 'edit'" variant="primary" @click="save">{{ $t('message.Update') }}</b-button>
+          <b-button v-if="mode === 'remove'" variant="danger" @click="remove">{{ $t('message.Delete') }}</b-button>
+          <b-button variant="secondary" @click="reset" class="ml-2">{{ $t('message.Cancel') }}</b-button>
         </b-col>
       </b-row>
     </b-form>
@@ -113,6 +113,7 @@ export default {
       const url = `${baseApiUrl}/users`
       axios.get(url).then(res => {
         this.users = res.data
+        document.documentElement.scrollTop = 0;  
       })
     },
     reset() {
@@ -146,17 +147,16 @@ export default {
     setFields() {
       this.fields = this.$mq === 'xs' || this.$mq === 'sm'  ?
       [
-        { key: 'name', label: 'Name', sortable: true },
+        { key: 'name', label: this.$i18n.t('message.Name'), sortable: true },
         { key: 'admin', label: 'Admin', sortable: true,
           formatter: value => value ? 'Yes' : 'No'},
-        { key: 'actions', label: 'Actions' }
+        { key: 'actions', label: this.$i18n.t('message.Actions') }
       ] : [
-        { key: 'id', label: 'Code', sortable: true },
-        { key: 'name', label: 'Name', sortable: true },
+        { key: 'name', label: this.$i18n.t('message.Name'), sortable: true },
         { key: 'email', label: 'E-mail', sortable: true },
         { key: 'admin', label: 'Admin', sortable: true,
           formatter: value => value ? 'Yes' : 'No'},
-        { key: 'actions', label: 'Actions' }
+        { key: 'actions', label: this.$i18n.t('message.Actions') }
       ]
     }
   },

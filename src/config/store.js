@@ -59,7 +59,7 @@ export default new Vuex.Store({
       
       if (!userData) {
         context.commit('setValidatingToken', false)            
-        if(!router.history.current.name.startsWith('auth'))
+        if(router && !router.history.current.name.startsWith('auth'))
           router.push({ name: 'auth' })
         return 
       }

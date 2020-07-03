@@ -9,10 +9,10 @@
     </div>
     <div class="user-dropdown-content">
       <router-link to="/admin" v-if="user.admin">
-        <i class="fa fa-cogs" /> Administration
+        <i class="fa fa-cogs" /> {{ $t('message.Administration') }}
       </router-link>
       <a href @click.prevent="logout">
-        <i class="fa fa-sign-out" /> Sign out
+        <i class="fa fa-sign-out" /> {{ $t('message.SignOut') }}
       </a>
     </div>
   </div>
@@ -21,7 +21,7 @@
     <router-link to="/auth" class="login-button">
       <i class="fa fa-user login-icon-xs d-none d-sm-block"></i>
       <i class="fa fa-user login-icon-gtxs d-block d-sm-none"></i>
-      <span class="d-none d-sm-block"> {{ $t('message.registerOrLogin') }}</span>  
+      <span class="d-none d-sm-block"> {{ $t('message.RegisterOrLogin') }}</span>  
       <div class="user-dropdown-img d-none d-sm-block" >
         <Gravatar email="be welcome!!!!!!" alt="User" />
       </div>      

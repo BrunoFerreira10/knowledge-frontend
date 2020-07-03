@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <span>Copyright <strong>mun-dev</strong> © 2020</span>  
+    <span> {{ $t('message.Copyright') }} <strong>mun-dev</strong> © 2020</span>  
   </footer>
 </template>
 

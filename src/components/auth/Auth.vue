@@ -4,21 +4,21 @@
       <img src="@/assets/logo.png" alt="logo" width="200">
       <hr>
       <div class="auth-title">
-        {{ showSignup ? 'Register' : 'Login'}}
+        {{ showSignup ? $t('message.Register') : 'Login'}}
       </div>
-
-      <input type="text" v-if="showSignup" v-model="user.name" placeholder="Name">
-      <input type="text" v-model="user.email" name="email" placeholder="E-mail"> 
-      <input type="password" v-if="!showSignup" v-model="user.password" name="password" placeholder="Password" @keyup="signin">
-      <input type="password" v-else v-model="user.password" name="password" placeholder="Password">
-      <input type="password" v-if="showSignup" v-model="user.confirmPassword" placeholder="Confirm password">
-
-      <button v-if="showSignup" @click="signup">Register</button>
-      <button v-else @click="signin">Enter</button>
+      <form>
+      <input type="text" v-if="showSignup" v-model="user.name" :placeholder="$t('message.Name')">
+      <input type="text" autoComplete="username" v-model="user.email" name="email" placeholder="E-mail"> 
+      <input type="password" autoComplete="current-password" v-if="!showSignup" v-model="user.password" name="Password" :placeholder="$t('message.Password')" @keyup="signin">
+      <input type="password" v-else v-model="user.password" name="Password" :placeholder="$t('message.Password')">
+      <input type="password" v-if="showSignup" v-model="user.confirmPassword" :placeholder="$t('message.ConfirmPassword')">
+      </form>
+      <button v-if="showSignup" @click="signup">{{ $t('message.Register') }}</button>
+      <button v-else @click="signin">{{ $t('message.Enter') }}</button>
 
       <a href @click.prevent="showSignup = !showSignup">
-        <span v-if="showSignup">Already registered? Access login!</span>
-        <span v-else>Not registered? Register here!</span>
+        <span v-if="showSignup">{{ $t('message.AlreadyRegisteredAccessLogin') }}</span>
+        <span v-else>{{ $t('message.NotRegisteredRegisterHere') }}</span>
       </a>
       <div class="lang">
         <a @click.prevent="()=>setLang('us')" ><country-flag country='us' /></a>
@@ -73,15 +73,11 @@ export default {
     },
     setLang(lang) {
       localStorage.setItem('__user_lang', lang)
-      location.reload()
-      
+      location.reload()      
+    },
+    mounted() {
+      document.documentElement.scrollTop = 1000;  
     }
-  },
-  mounted() {
-    window.scrollTo(0, 1)
-  },
-  created() {
-    
   }
 }
 </script>

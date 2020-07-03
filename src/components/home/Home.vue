@@ -1,10 +1,10 @@
 <template>
   <div class="home">
-    <PageTitle icon="fa fa-home" title="Dashboard" subtitle="Knowledge base"></PageTitle>
+    <PageTitle icon="fa fa-home" :title="$t('message.Dashboard')" :subtitle="$t('message.appTitle')"></PageTitle>
     <div class="stats">
-      <Stat title="Categories" :value="stat.categories" icon="fa fa-folder" color="#d54d50" />
-      <Stat title="Articles" :value="stat.articles" icon="fa fa-file" color="#3bc480" />
-      <Stat title="Users" :value="stat.users" icon="fa fa-user" color="#3282cd" />
+      <Stat :title="$t('message.Categories')" :value="stat.categories" icon="fa fa-folder" color="#d54d50" />
+      <Stat :title="$t('message.Articles')" :value="stat.articles" icon="fa fa-file" color="#3bc480" />
+      <Stat :title="$t('message.Users')" :value="stat.users" icon="fa fa-user" color="#3282cd" />
     </div>
   </div>
 </template>
