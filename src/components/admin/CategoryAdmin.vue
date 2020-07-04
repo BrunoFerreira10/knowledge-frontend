@@ -148,7 +148,7 @@ export default {
   mounted() {
     this.setFields()
     this.listAll()
-    window.addEventListener('resize', this.setFields)    
+    window.addEventListener('resize', this.setFields)        
   }
 }
 </script>

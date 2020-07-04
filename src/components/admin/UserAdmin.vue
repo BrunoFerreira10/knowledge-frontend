@@ -112,8 +112,7 @@ export default {
     loadUsers() {
       const url = `${baseApiUrl}/users`
       axios.get(url).then(res => {
-        this.users = res.data
-        document.documentElement.scrollTop = 0;  
+        this.users = res.data        
       })
     },
     reset() {
@@ -143,6 +142,7 @@ export default {
     loadUser(user, mode = 'save') {
       this.mode = mode
       this.user = { ...user }
+      document.documentElement.scrollTop = 0;  
     },
     setFields() {
       this.fields = this.$mq === 'xs' || this.$mq === 'sm'  ?

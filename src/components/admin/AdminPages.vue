@@ -5,13 +5,13 @@
     <div class="admin-pages-tabs">
       <b-card no-body>
         <b-tabs card>
-          <b-tab :title="$t('message.Articles')" active>     
+          <b-tab :title="$t('message.Articles')" active lazy>     
             <ArticleAdmin></ArticleAdmin>
           </b-tab>
-          <b-tab :title="$t('message.Categories')">
+          <b-tab :title="$t('message.Categories')" lazy>
             <CategoryAdmin></CategoryAdmin>
           </b-tab>
-          <b-tab :title="$t('message.Users')">
+          <b-tab :title="$t('message.Users')" lazy>
             <UserAdmin></UserAdmin>
           </b-tab>
         </b-tabs>

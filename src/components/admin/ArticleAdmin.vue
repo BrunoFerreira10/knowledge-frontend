@@ -193,8 +193,7 @@ export default {
     reset() {
       this.article = {},
       this.loadArticles()
-      this.mode = 'list'
-      console.log(this)
+      this.mode = 'list'      
     },
     save() {
       const method = this.article.id ? 'put' : 'post'
@@ -234,7 +233,7 @@ export default {
     this.loadArticles()
     this.loadCategories()
     this.loadUsers()
-    window.addEventListener('resize', this.setFields)    
+    window.addEventListener('resize', this.setFields)          
   },
   watch: {
     page() {
