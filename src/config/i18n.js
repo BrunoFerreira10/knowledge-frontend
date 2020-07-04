@@ -82,6 +82,45 @@ const messages = {
       Dashboard: 'Painel de controle',
       EnterArticleContents: 'Adicione um conteudo ao artigo...'
     }
+  },
+  de: {
+    message: {
+      // t1 ******************/
+      appTitle: 'Wissensdatenbank',
+      RegisterOrLogin: 'Registrieren oder Login',
+      Enter: 'Enter',
+      Password: 'Passwort',
+      // t2******************/
+      NotRegisteredRegisterHere: 'Nicht registriert? Hier registrieren!',
+      Copyright: 'Urheberrecht',
+      AlreadyRegisteredAccessLogin: 'Bereits registriert? Zwischen hier!',
+      Register: 'Registrieren',
+      Name: 'Name',
+      ConfirmPassword: 'Passwort bestätigen',
+      Categories: 'Kategorien',
+      Articles: 'Artikel',
+      Users: 'Benutzer',
+      Administration: 'Verwaltung',
+      SystemAdministration: 'Systemadministration',
+      SignOut: 'Beenden',
+      RegistrationAndOthers: 'Registrierung und andere',
+      Add: 'Hinzufügen',
+      Save: 'Speichern',
+      Cancel: 'Abbrechen',
+      Update: 'Update',
+      Delete: 'Löschen',
+      Code: 'Code',
+      Description: 'Beschreibung',
+      Actions: 'Aktionen',
+      Path: 'Pfad',
+      Image: 'Bild',
+      Category: 'Kategorie',
+      Author: 'Autor',
+      Contents: 'Inhalt',
+      CategoryParent: 'Übergeordnete Kategorie',
+      Dashboard: 'Systemsteuerung',
+      EnterArticleContents: 'Inhalt zum Artikel hinzufügen ...'
+    }
   }
 }
 
