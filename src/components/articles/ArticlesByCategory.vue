@@ -10,7 +10,7 @@
     </ul>
     <div class="load-more">
         <button v-if="loadMore" class="btn btn-lg btn-outline-primary" @click="getArticles()">
-          Load more articles
+          {{ $t('message.LoadMore')}}
         </button>
       </div>
   </div>
