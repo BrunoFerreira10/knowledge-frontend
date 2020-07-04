@@ -21,28 +21,34 @@
         <span v-else>{{ $t('message.NotRegisteredRegisterHere') }}</span>
       </a>
       <div class="lang">
-        <a @click.prevent="()=>setLang('us')" ><country-flag country='us' /></a>
+        <!-- <a @click.prevent="()=>setLang('us')" ><country-flag country='us' /></a>
         <a @click.prevent="()=>setLang('br')" ><country-flag country='br' /></a>
-        <a @click.prevent="()=>setLang('de')" ><country-flag country='de' /></a>        
+        <a @click.prevent="()=>setLang('de')" ><country-flag country='de' /></a>         -->
+        <LocaleDropdown class="locale-dropdown mt-2" :locales="['us','br','de']" v-on:change="localeChange" 
+          :selectedLocale='locale'> 
+        </LocaleDropdown>
       </div>            
     </div>
   </div>
 </template>
 
 <script>
-import CountryFlag from 'vue-country-flag'
+// import CountryFlag from 'vue-country-flag'
 import { baseApiUrl, showError, userKey } from '@/global'
 import axios from 'axios'
+import { setLocale, getLocale } from '@/global'
+import LocaleDropdown from '../footer/LocaleDropdown'
 
 export default {
   name: 'Auth',
   components: {
-    CountryFlag
+    LocaleDropdown
   },
   data: function() {
     return{
       showSignup: false,
-      user:{}
+      user:{},
+      locale: getLocale() 
     }
   },
   methods: {
@@ -70,13 +76,8 @@ export default {
           this.showSignup = false
         })
         .catch(showError)
-    },
-    setLang(lang) {
-      localStorage.setItem('__user_lang', lang)
-      location.reload()      
-    },
-    mounted() {
-      document.documentElement.scrollTop = 1000;  
+    },localeChange(evt) {
+      setLocale(evt.currentLocale)
     }
   }
 }
