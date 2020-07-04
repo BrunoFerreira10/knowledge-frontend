@@ -25,7 +25,7 @@
         <a @click.prevent="()=>setLang('br')" ><country-flag country='br' /></a>
         <a @click.prevent="()=>setLang('de')" ><country-flag country='de' /></a>         -->
         <LocaleDropdown class="locale-dropdown mt-2" :locales="['us','br','de']" v-on:change="localeChange" 
-          :selectedLocale='locale'> 
+          :selectedLocale='locale' :defaultLocale='locale'>
         </LocaleDropdown>
       </div>            
     </div>
@@ -38,6 +38,7 @@ import { baseApiUrl, showError, userKey } from '@/global'
 import axios from 'axios'
 import { setLocale, getLocale } from '@/global'
 import LocaleDropdown from '../footer/LocaleDropdown'
+import { mapState,mapActions } from 'vuex'
 
 export default {
   name: 'Auth',
@@ -47,11 +48,14 @@ export default {
   data: function() {
     return{
       showSignup: false,
-      user:{},
-      locale: getLocale() 
+      user:{}      
     }
   },
+  computed: {
+    ...mapState(['locale'])
+  },
   methods: {
+    ...mapActions(['setLocale']),
     signin(evt) {
       
       if(evt.key && evt.key !== 'Enter') {        
@@ -77,7 +81,7 @@ export default {
         })
         .catch(showError)
     },localeChange(evt) {
-      setLocale(evt.currentLocale)
+      this.setLocale(evt.selectedLocale)
     }
   }
 }

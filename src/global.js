@@ -20,12 +20,11 @@ function showError(err) {
   }
 }
 
-function setLocale(locale) {
-  localStorage.setItem('__user_lang', locale)
-  location.reload()  
+function setUserLocale(locale) {
+  localStorage.setItem('__user_lang', locale)  
 }
 
-function getLocale() {
+function getUserLocale() {
   return localStorage.getItem('__user_lang')  
 }
 
@@ -33,6 +32,6 @@ export {
   baseApiUrl,
   showError,
   userKey,
-  setLocale,
-  getLocale 
+  // setUserLocale,
+  // getUserLocale 
 }

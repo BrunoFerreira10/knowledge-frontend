@@ -12,7 +12,7 @@
 // @ is the src path
 import Vue from 'vue'
 import axios from 'axios'
-import { baseApiUrl, userKey } from '@/global'
+import { baseApiUrl, userKey, getUserLocale } from '@/global'
 
 import { mapState, mapActions } from 'vuex'
 import Header from "@/components/template/Header"
@@ -32,12 +32,12 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['validateToken']),
+    ...mapActions(['validateToken','setLocale']),
     
   },
   created() {    
-    //if(this.user)  
-      this.validateToken()      
+      this.validateToken()            
+      //this.setLocale(getUserLocale())
   }
 };
 </script>

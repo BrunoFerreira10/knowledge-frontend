@@ -3,13 +3,13 @@
     
     <div @click="showLocales" 
       :class="isContentVisible ? 'loc-drop-button-active' : 'loc-drop-button'">
-      <country-flag :country='currentLocale' />   
+      <country-flag :country='selectedLocale' />   
     </div>
     
     <div ref="loc-drop-content" :class="isContentVisible ? 'loc-drop-content-visible' : 'loc-drop-content'">
       <div v-for="locale in locales" :key="locale"       
         @click.prevent="evt => localeSelected(locale)">
-        <country-flag v-if="locale !== currentLocale"  :country='locale'/>          
+        <country-flag v-if="locale !== selectedLocale"  :country='locale'/>          
       </div>
     </div>
 
@@ -25,14 +25,14 @@ export default {
   props: {
     direction: String,
     locales: Array,
-    selectedLocale: String
+    defaultLocale: String
   },
   components: {
     CountryFlag
   },
   data: function(){
     return {
-      currentLocale: this.selectedLocale || this.locales[0],  // *******
+      selectedLocale: this.defaultLocale,
       isContentVisible: false
     }
   },
@@ -43,7 +43,7 @@ export default {
     },
     localeSelected(locale) {
       this.isContentVisible = false
-      this.currentLocale = locale
+      this.selectedLocale = locale
       this.$emit('change', {...this.$data})
     }
   },mounted() {    

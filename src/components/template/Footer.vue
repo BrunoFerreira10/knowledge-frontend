@@ -5,16 +5,18 @@
       <strong>mun-dev</strong> © 2020
     </span>
     
-    <LocaleDropdown class="ml-2" :locales="['us','br','de']" v-on:change="localeChange" 
-      :selectedLocale='locale' direction='top'> 
-    </LocaleDropdown>    
+    <div class="locale-dropdown">
+      <LocaleDropdown :locales="['us','br','de']" v-on:change="localeChange" 
+        :selectedLocale='locale' direction='top' :defaultLocale='locale'> 
+      </LocaleDropdown>    
+    </div>
       
   </footer>
 </template>
 
 <script>
 import LocaleDropdown from '../footer/LocaleDropdown'
-import { setLocale, getLocale } from '@/global'
+import { mapState,mapActions } from 'vuex'
 
 export default {
   name: 'Footer',
@@ -22,13 +24,16 @@ export default {
     LocaleDropdown
   },
   data: function() {
-    return {
-      locale: getLocale()   
+    return {      
     }
   },
+  computed: {
+    ...mapState(['locale']),
+  },
   methods: {
+    ...mapActions(['setLocale']),    
     localeChange(evt) {
-      setLocale(evt.currentLocale)
+      this.setLocale(evt.selectedLocale)
     }
   }
 }
@@ -44,6 +49,14 @@ export default {
   align-items: center;
   justify-content: center;
   padding-right: 10px;
+
+  position: relative;
+
+}
+
+.footer .locale-dropdown {
+  position: absolute;
+  right: 0px;  
 }
 
 </style>
