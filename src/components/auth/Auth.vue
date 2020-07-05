@@ -21,7 +21,7 @@
         <span v-else>{{ $t('message.NotRegisteredRegisterHere') }}</span>
       </a>
       
-        <LocaleDropdown class="locale-dropdown mt-3" :locales="['us','br','de']" v-on:change="localeChange" 
+        <LocaleDropdown class="locale-dropdown mt-3" :locales="locales" v-on:change="localeChange" 
           :selectedLocale='locale' :defaultLocale='locale'>
         </LocaleDropdown>
                   
@@ -49,7 +49,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['locale'])
+    ...mapState(['locales','locale'])
   },
   methods: {
     ...mapActions(['setLocale']),

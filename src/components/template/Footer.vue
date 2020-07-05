@@ -6,7 +6,7 @@
     </span>
     
     <div v-if="!isAuthPage" class="locale-dropdown">
-      <LocaleDropdown :locales="['us','br','de']" v-on:change="localeChange" 
+      <LocaleDropdown :locales="locales" v-on:change="localeChange" 
         :selectedLocale='locale' direction='top' :defaultLocale='locale'> 
       </LocaleDropdown>    
     </div>
@@ -28,7 +28,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['locale','isAuthPage']),
+    ...mapState(['locales','locale','isAuthPage']),
   },
   methods: {
     ...mapActions(['setLocale']),    

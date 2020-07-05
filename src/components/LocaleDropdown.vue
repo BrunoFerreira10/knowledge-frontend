@@ -48,7 +48,7 @@ export default {
     }
   },mounted() {    
     if(this.direction === 'top'){
-      this.$refs['loc-drop-content'].style.top = 'calc(-250% + 8px)'
+      this.$refs['loc-drop-content'].style.top = 'calc(-350% + 3px)'
     } else {
       this.$refs['loc-drop-content'].style.top = '100%'
     }

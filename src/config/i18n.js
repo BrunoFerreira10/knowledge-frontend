@@ -4,6 +4,7 @@ import store from './store'
 
 import usMessages from './messages/us'
 import brMessages from './messages/br'
+import esMessages from './messages/es'
 import deMessages from './messages/de'
 
  Vue.use(VueI18n)
@@ -15,6 +16,9 @@ const messages =
   },
   br: {
     ...brMessages
+  },
+  es: {
+    ...deMessages
   },
   de: {
     ...deMessages

@@ -15,6 +15,7 @@ export default new Vuex.Store({
     isValidatingToken: false,
     isAuthPage: false,
     user: null,
+    locales: ['us','br','es','de'],
     locale: localStorage.getItem('__user_lang') || 'us'
   },
   mutations: {
