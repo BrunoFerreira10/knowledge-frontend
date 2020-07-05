@@ -20,18 +20,8 @@ function showError(err) {
   }
 }
 
-function setUserLocale(locale) {
-  localStorage.setItem('__user_lang', locale)  
-}
-
-function getUserLocale() {
-  return localStorage.getItem('__user_lang')  
-}
-
 export {
   baseApiUrl,
   showError,
-  userKey,
-  // setUserLocale,
-  // getUserLocale 
+  userKey
 }

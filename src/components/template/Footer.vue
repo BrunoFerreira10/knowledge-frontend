@@ -5,7 +5,7 @@
       <strong>mun-dev</strong> © 2020
     </span>
     
-    <div class="locale-dropdown">
+    <div v-if="!isAuthPage" class="locale-dropdown">
       <LocaleDropdown :locales="['us','br','de']" v-on:change="localeChange" 
         :selectedLocale='locale' direction='top' :defaultLocale='locale'> 
       </LocaleDropdown>    
@@ -28,7 +28,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['locale']),
+    ...mapState(['locale','isAuthPage']),
   },
   methods: {
     ...mapActions(['setLocale']),    

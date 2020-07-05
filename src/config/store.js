@@ -12,7 +12,8 @@ export default new Vuex.Store({
     isMenuToggleButtonVisible: true,
     isDropdownMenuVisible: true,
     isMenuVisible: true,    
-    isValidatingToken: false,    
+    isValidatingToken: false,
+    isAuthPage: false,
     user: null,
     locale: localStorage.getItem('__user_lang') || 'us'
   },
@@ -49,6 +50,9 @@ export default new Vuex.Store({
     },
     setDropdownMenuVisible(state, isVisible){
       state.isDropdownMenuVisible = isVisible
+    },    
+    setAuthPage(state, isAuthPage){
+      state.isAuthPage =  isAuthPage
     } 
   },
   actions: {

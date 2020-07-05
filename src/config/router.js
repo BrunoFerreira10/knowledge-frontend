@@ -68,9 +68,11 @@ router.beforeEach((to, from, next) => {
     store.commit('setMenuToggleButtonVisible', false)    
     store.commit('setDropdownMenuVisible', false)
     store.commit('toggleMenu', false)
+    store.commit('setAuthPage', true)
   } else {
     store.commit('setMenuToggleButtonVisible', true)    
     store.commit('setDropdownMenuVisible', true)    
+    store.commit('setAuthPage', false)
   }  
   
 })
