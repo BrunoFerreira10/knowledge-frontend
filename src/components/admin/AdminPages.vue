@@ -40,5 +40,6 @@ export default {
 <style>
   .admin-pages-tabs .card-header {
     padding-top: 0px;
+    font-size: 0.9rem;
   }
 </style>

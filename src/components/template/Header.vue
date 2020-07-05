@@ -54,7 +54,7 @@ export default {
 
   position: fixed;
   width: 100%;
-  height: 60px;
+  height: 45px;
   z-index: 1;
 }
 
@@ -68,11 +68,12 @@ export default {
 }
 
 .title {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #fff;
   font-weight: 100;
   /* flex-grow: 1; */
   text-align: center;
+  margin: 0px;
 }
 
 .title a {

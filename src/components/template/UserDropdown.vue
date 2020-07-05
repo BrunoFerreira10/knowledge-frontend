@@ -63,15 +63,21 @@ export default {
   color: #fff;
   font-weight: 100;
   height: 100%;
-  padding: 0px 20px;
+  padding: 0px 10px;  
+}
+
+.user-button span {
+  font-size: 0.9rem;
 }
 
 .login-button span {
+  font-size: 0.9rem;
   margin-left: 10px;
 }
 
 .login-icon-gtxs {
-  font-size: 2rem;
+  font-size: 1.4rem;
+  margin-right: 10px;
 }
 
 .user-button:hover {
@@ -83,7 +89,7 @@ export default {
 }
 
 .user-dropdown-img > img {
-  max-height: 37px;
+  max-height: 30px;
   border-radius: 5px;
 }
 

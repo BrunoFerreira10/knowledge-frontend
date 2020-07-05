@@ -117,7 +117,7 @@
         </div>
       </template>
     </b-table>
-    <b-pagination size="md" v-model="page" :total-rows="count" :per-page="limit" />    
+    <b-pagination class="paginator" size="md" v-model="page" :total-rows="count" :per-page="limit" />    
   </div>
 </template>
 
@@ -254,4 +254,25 @@ export default {
 .article-admin table{
   margin-top: 15px;
 }
+
+.article-admin button {
+  font-size: 0.9rem;
+}
+
+.paginator button {
+  font-size: 1rem;
+}
+
+
+.b-table > thead > tr > th > div {
+  font-size: 0.95rem;
+}
+
+.b-table > tbody > tr > td {
+  font-size: 0.9rem;
+}
+
+
+
+
 </style>

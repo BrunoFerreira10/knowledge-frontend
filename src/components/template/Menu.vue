@@ -73,7 +73,11 @@ export default {
   .menu .tree-anchor,
   .menu .tree-anchor:hover {
     color: #FFF;
-    text-decoration: none;
+    text-decoration: none;    
+  }
+
+  .menu .tree-anchor{
+    font-size: 1rem;
   }
 
   .menu .tree-node:not(.selected) > .tree-content:hover {
@@ -100,11 +104,12 @@ export default {
   .menu .menu-filter i {
     color: #AAA;
     margin-right: 10px;
+    font-size: 1.0rem;
   }
 
   .menu input {
     color: #CCC;
-    font-size: 1.1rem;
+    font-size: 1.0rem;
     border: 0;
     outline: 0;
     width: 100%;
@@ -113,7 +118,7 @@ export default {
   
   .menu .tree-filter-empty {
     color: #CCC;
-    font-size: 1.1rem;
+    font-size: 1.0rem;
     margin-left: 20px;
     /* WOW */
   }

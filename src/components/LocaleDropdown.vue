@@ -3,7 +3,7 @@
     
     <div @click="showLocales" 
       :class="isContentVisible ? 'loc-drop-button-active' : 'loc-drop-button'">
-      <country-flag :country='selectedLocale' />   
+      <country-flag :country='selectedLocale' size = "small" />   
     </div>
     
     <div ref="loc-drop-content" :class="isContentVisible ? 'loc-drop-content-visible' : 'loc-drop-content'">

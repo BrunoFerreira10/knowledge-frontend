@@ -164,4 +164,21 @@ export default {
 .category-admin table{
   margin-top: 15px;
 }
+
+.article-admin button {
+  font-size: 0.9rem;
+}
+
+.paginator button {
+  font-size: 1rem;
+}
+
+
+.b-table > thead > tr > th > div {
+  font-size: 0.95rem;
+}
+
+.b-table > tbody > tr > td {
+  font-size: 0.9rem;
+}
 </style>

@@ -30,7 +30,7 @@ export default {
     margin-right: 20px;
     margin-bottom: 20px;
     background-color: #fff;
-    padding: 20px;
+    padding: 10px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 1px 5x rgba(0, 0, 0, 0.15);
   }
@@ -41,7 +41,7 @@ export default {
   }
 
   .stat-icon i {
-    font-size: 5rem;
+    font-size: 3rem;
   }
 
   .stat-info {
@@ -52,10 +52,10 @@ export default {
   }
 
   .stat-title {
-    font-size: 1.1rem;
+    font-size: 1.0rem;
   }
 
   .stat-value {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 </style>

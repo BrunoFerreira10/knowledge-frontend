@@ -86,6 +86,9 @@ export default {
     margin-top: 25px;    
   }
 
+  .articles-by-category .load-more > button {
+    font-size: 1rem;
+  }
   
 
 </style>

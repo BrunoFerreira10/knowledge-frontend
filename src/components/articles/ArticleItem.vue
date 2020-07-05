@@ -42,7 +42,17 @@ export default {
   }
 
   .article-item-info h2 {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+
+  .article-item-info p {
+    flex: 1;
+    font-size: 0.95rem;
+  }
+
+  .article-item-author  {
+    font-size: 0.95rem;
   }
 
   .article-item-image {
@@ -67,9 +77,7 @@ export default {
     align-self: stretch;
   }
 
-  .article-item-info p {
-    flex: 1;
-  }
+  
 
   @media (max-width: 576px){
     .article-item a {            
