@@ -21,9 +21,9 @@
         <span v-else>{{ $t('message.NotRegisteredRegisterHere') }}</span>
       </a>
       
-        <LocaleDropdown class="locale-dropdown mt-3" :locales="locales" v-on:change="localeChange" 
+        <!-- <LocaleDropdown class="locale-dropdown mt-3" :locales="locales" v-on:change="localeChange" 
           :selectedLocale='locale' :defaultLocale='locale'>
-        </LocaleDropdown>
+        </LocaleDropdown> -->
                   
     </div>
   </div>
@@ -34,13 +34,13 @@
 import { baseApiUrl, showError, userKey } from '@/global'
 import axios from 'axios'
 import { setLocale, getLocale } from '@/global'
-import LocaleDropdown from '../LocaleDropdown'
+// import LocaleDropdown from '../LocaleDropdown'
 import { mapState,mapActions } from 'vuex'
 
 export default {
   name: 'Auth',
   components: {
-    LocaleDropdown
+    // LocaleDropdown
   },
   data: function() {
     return{

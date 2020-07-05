@@ -18,15 +18,14 @@ const messages =
     ...brMessages
   },
   es: {
-    ...deMessages
+    ...esMessages
   },
   de: {
     ...deMessages
   }
 }
 
-const i18n = new VueI18n({
-  // locale: localStorage.getItem('__user_lang') || 'us', 
+const i18n = new VueI18n({  
   locale: store.state.locale,
   fallbackLocale: 'us',
   messages,   

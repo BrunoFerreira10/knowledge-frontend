@@ -5,7 +5,7 @@
       <strong>mun-dev</strong> © 2020
     </span>
     
-    <div v-if="!isAuthPage" class="locale-dropdown">
+    <div class="locale-dropdown">
       <LocaleDropdown :locales="locales" v-on:change="localeChange" 
         :selectedLocale='locale' direction='top' :defaultLocale='locale'> 
       </LocaleDropdown>    

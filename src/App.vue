@@ -47,12 +47,13 @@ export default {
 }
 
 body {
-  margin: 0;
+  margin: 0;  
 }
 
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #efefef;
 
   height: 100vh;
   display: grid;
@@ -62,7 +63,7 @@ body {
   grid-template-areas:
     "header header"
     "menu content"
-    "menu footer";
+    "footer footer";
 }
 
 #app.hide-menu {
@@ -70,5 +71,16 @@ body {
     "header header"
     "content content"
     "footer footer";
+}
+
+.content {
+  margin-bottom: 40px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0px;
+  height: 40px;
+  width: 100%;  
 }
 </style>
