@@ -1,7 +1,7 @@
 <template>
   <div id="app" :class="{'hide-menu': !isMenuVisible}">
     <Header :title="$t('message.appTitle')"></Header>
-    <Menu v-if="isMenuVisible"></Menu>
+    <Menu v-show="isMenuVisible"></Menu>
     <Loading v-if="isValidatingToken"></Loading>
     <Content v-else></Content>
     <Footer></Footer>
@@ -36,8 +36,7 @@ export default {
     
   },
   created() {    
-      this.validateToken()            
-      //this.setLocale(getUserLocale())
+      this.validateToken()                  
   }
 };
 </script>
