@@ -20,14 +20,11 @@
         <span v-if="showSignup">{{ $t('message.AlreadyRegisteredAccessLogin') }}</span>
         <span v-else>{{ $t('message.NotRegisteredRegisterHere') }}</span>
       </a>
-      <div class="lang">
-        <!-- <a @click.prevent="()=>setLang('us')" ><country-flag country='us' /></a>
-        <a @click.prevent="()=>setLang('br')" ><country-flag country='br' /></a>
-        <a @click.prevent="()=>setLang('de')" ><country-flag country='de' /></a>         -->
-        <LocaleDropdown class="locale-dropdown mt-2" :locales="['us','br','de']" v-on:change="localeChange" 
+      
+        <LocaleDropdown class="locale-dropdown mt-3" :locales="['us','br','de']" v-on:change="localeChange" 
           :selectedLocale='locale' :defaultLocale='locale'>
         </LocaleDropdown>
-      </div>            
+                  
     </div>
   </div>
 </template>
@@ -146,8 +143,8 @@ export default {
       rgba(120, 120, 120, 0));
   }
 
-  .lang {
-    margin-top: 10px;
+  .locale-dropdown {
+    z-index: 1;
   }
 
 </style>
