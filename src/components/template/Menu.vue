@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 import Tree from 'liquor-tree'
 import { baseApiUrl } from '@/global'
 import axios from 'axios'
@@ -36,6 +36,7 @@ export default {
   },
   computed: mapState(['isMenuVisible']),
   methods: {
+    ...mapMutations(['toggleMenu']),
     getTreeData() {
       const url = `${baseApiUrl}/categories/tree`
       return axios(url).then(res => res.data)
@@ -46,9 +47,9 @@ export default {
         params: { id: node.id }
       })
 
-      // if(this.$mq === 'xs' || this.$mq === 'sm'){
-      //   this.$store.commit('toggleMenu', false)
-      // } 
+      if(this.$mq === 'xs' || this.$mq === 'sm'){
+         this.toggleMenu(false)
+      } 
     }
   },
   mounted() {
