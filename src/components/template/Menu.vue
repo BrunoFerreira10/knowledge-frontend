@@ -65,8 +65,7 @@ export default {
 
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    position: fixed;
+    flex-wrap: wrap;    
     width: 300px;
     height: 100%;
   }

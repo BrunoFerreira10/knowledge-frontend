@@ -83,8 +83,7 @@ export default {
 .loc-drop-content {
   position: absolute;
   right: 0px;
-  background-color: rgba(0, 0, 0, 0.2);
-  /* top: calc(-250% + 8px); */
+  background-color: rgba(0, 0, 0, 0.2);  
 
   display: flex;
   flex-direction: column;

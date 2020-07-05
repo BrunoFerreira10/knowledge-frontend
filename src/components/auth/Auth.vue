@@ -20,27 +20,21 @@
         <span v-if="showSignup">{{ $t('message.AlreadyRegisteredAccessLogin') }}</span>
         <span v-else>{{ $t('message.NotRegisteredRegisterHere') }}</span>
       </a>
-      
-        <!-- <LocaleDropdown class="locale-dropdown mt-3" :locales="locales" v-on:change="localeChange" 
-          :selectedLocale='locale' :defaultLocale='locale'>
-        </LocaleDropdown> -->
                   
     </div>
   </div>
 </template>
 
 <script>
-// import CountryFlag from 'vue-country-flag'
 import { baseApiUrl, showError, userKey } from '@/global'
 import axios from 'axios'
 import { setLocale, getLocale } from '@/global'
-// import LocaleDropdown from '../LocaleDropdown'
 import { mapState,mapActions } from 'vuex'
 
 export default {
   name: 'Auth',
   components: {
-    // LocaleDropdown
+
   },
   data: function() {
     return{

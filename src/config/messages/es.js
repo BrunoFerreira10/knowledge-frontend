@@ -24,7 +24,7 @@
     LoadMore: 'Carga más',
     Name: 'Nombre',
     NotRegisteredRegisterHere: '¿No registrado? ¡Registrarse aquí!',
-    Password: 'contraseña',
+    Password: 'Contraseña',
     Path: 'Camino',
     Register: 'Registrarse',
     RegisterOrLogin: 'Registrarse o iniciar sesión',
@@ -33,6 +33,6 @@
     SignOut: 'Fuera',
     SystemAdministration: 'Administracion del sistema',
     Update: 'Actualizar',
-    Users: 'Los usuarios',
+    Users: 'Usuarios',
   }
 }
