@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import LocaleDropdown from '../footer/LocaleDropdown'
+import LocaleDropdown from '../LocaleDropdown'
 import { mapState,mapActions } from 'vuex'
 
 export default {

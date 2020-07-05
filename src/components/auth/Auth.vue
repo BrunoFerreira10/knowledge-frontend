@@ -34,7 +34,7 @@
 import { baseApiUrl, showError, userKey } from '@/global'
 import axios from 'axios'
 import { setLocale, getLocale } from '@/global'
-import LocaleDropdown from '../footer/LocaleDropdown'
+import LocaleDropdown from '../LocaleDropdown'
 import { mapState,mapActions } from 'vuex'
 
 export default {
