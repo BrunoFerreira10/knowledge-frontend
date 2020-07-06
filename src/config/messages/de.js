@@ -34,5 +34,6 @@
     SystemAdministration: 'Systemadministration',
     Update: 'Update',
     Users: 'Benutzer',
+    Statistics: 'Statistiken',
   }
 }

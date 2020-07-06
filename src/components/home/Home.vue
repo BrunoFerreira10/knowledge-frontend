@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <PageTitle icon="fa fa-home" :title="$t('message.Dashboard')" :subtitle="$t('message.appTitle')"></PageTitle>
+    <PageTitle icon="fa fa-home" :title="$t('message.Statistics')" :subtitle="$t('message.appTitle')"></PageTitle>
     <div class="stats">
       <Stat :title="$t('message.Categories')" :value="stat.categories" icon="fa fa-folder" color="#d54d50" />
       <Stat :title="$t('message.Articles')" :value="stat.articles" icon="fa fa-file" color="#3bc480" />

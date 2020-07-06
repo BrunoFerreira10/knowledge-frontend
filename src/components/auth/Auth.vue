@@ -9,7 +9,8 @@
       <form>
       <input type="text" v-if="showSignup" v-model="user.name" :placeholder="$t('message.Name')">
       <input type="text" autoComplete="username" v-model="user.email" name="email" placeholder="E-mail"> 
-      <input type="password" autoComplete="current-password" v-if="!showSignup" v-model="user.password" name="Password" :placeholder="$t('message.Password')" @keyup="signin">
+      <input type="password" autoComplete="current-password" v-if="!showSignup" 
+        v-model="user.password" name="Password" :placeholder="$t('message.Password')" @keyup="signin">      
       <input type="password" v-else v-model="user.password" name="Password" :placeholder="$t('message.Password')">
       <input type="password" v-if="showSignup" v-model="user.confirmPassword" :placeholder="$t('message.ConfirmPassword')">
       </form>
@@ -73,7 +74,7 @@ export default {
         .catch(showError)
     },localeChange(evt) {
       this.setLocale(evt.selectedLocale)
-    }
+    }    
   }
 }
 </script>
