@@ -82,5 +82,6 @@ body {
   bottom: 0px;
   height: 40px;
   width: 100%;  
+  z-index: 10;
 }
 </style>
