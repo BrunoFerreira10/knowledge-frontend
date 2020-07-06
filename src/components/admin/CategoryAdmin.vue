@@ -67,6 +67,7 @@
         </div>
       </template>
     </b-table>
+    <b-pagination class="paginator" size="md" v-model="page" :total-rows="count" :per-page="limit" />
   </div>
 </template>
 
@@ -82,6 +83,9 @@ export default {
       mode: "list",
       modelItem: { parentId: null },
       modelList: [],
+      page: 1,
+      limit: 0,
+      count: 0,
       fields: []
     }
   },
@@ -96,9 +100,11 @@ export default {
   },
   methods: {
     listAll() {
-      axios.get(`${baseApiUrl}/categories`)
+      axios.get(`${baseApiUrl}/categories?page=${this.page}`)
         .then(list => {
-          this.modelList = list.data;
+          this.modelList = list.data.data;
+          this.count = list.data.count
+          this.limit = list.data.limit
         })
         .catch(showError)
     },
@@ -149,6 +155,11 @@ export default {
     this.setFields()
     this.listAll()
     window.addEventListener('resize', this.setFields)        
+  },
+  watch: {
+    page() {
+      this.listAll()
+    }
   }
 }
 </script>

@@ -91,6 +91,7 @@
         </div>
       </template>
     </b-table>
+    <b-pagination class="paginator" size='md' v-model="page" :total-rows="count" :per-page="limit" />
   </div>
 </template>
 
@@ -105,14 +106,19 @@ export default {
       mode: "list",
       user: {},
       users: [],
+      page: 1,
+      count: 0,
+      limit: 0,
       fields: []
     }
   },
   methods: {
     loadUsers() {
-      const url = `${baseApiUrl}/users`
+      const url = `${baseApiUrl}/users?page=${this.page}`
       axios.get(url).then(res => {
-        this.users = res.data        
+        this.users = res.data.data
+        this.count = res.data.count
+        this.limit = res.data.limit        
       })
     },
     reset() {
@@ -164,6 +170,11 @@ export default {
     this.setFields()
     this.loadUsers()
     window.addEventListener('resize', this.setFields)    
+  },
+  watch: {
+    page() {
+      this.loadUsers()      
+    }
   }
 }
 </script>
