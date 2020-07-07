@@ -4,9 +4,9 @@
       <i class="fa fa-lg" :class="icon"></i>
     </a>
     <div class="overlap">
-      <h1 class="title">
-        <router-link :to="'/'"> {{ $t("message.appTitle") }} </router-link>
-      </h1>
+      <!-- <h1 class="title"> -->
+        <router-link :to="'/'"> <img class="logo-header" src="@/assets/logo-header.png" alt="logo"> </router-link>
+      <!-- </h1> -->
     </div>    
     <UserDropdown v-if="isDropdownMenuVisible" class="drop-menu"/>
   </header>
@@ -105,6 +105,9 @@ header.header > a.toggle:hover {
 }
 .drop-menu {
   z-index: 1;
+}
+.logo-header {
+  height: 31px;
 }
 
 
