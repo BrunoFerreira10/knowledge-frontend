@@ -74,6 +74,9 @@ export default {
     ...mapActions(['setLocale']),
     signin(evt) {
       
+      this.showPassword = false
+      this.showConfirmPassword = false        
+      
       if(evt.key && evt.key !== 'Enter') {        
         return
       }
@@ -89,6 +92,9 @@ export default {
         })
     },
     signup() {
+      this.showPassword = false
+      this.showConfirmPassword = false
+
       axios.post(`${baseApiUrl}/signup`, this.user)
         .then(res => {
           this.$toasted.global.defaultSuccess()
