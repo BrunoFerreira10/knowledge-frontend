@@ -9,10 +9,20 @@
       <form>
       <input type="text" v-if="showSignup" v-model="user.name" :placeholder="$t('message.Name')">
       <input type="text" autoComplete="username" v-model="user.email" name="email" placeholder="E-mail"> 
-      <input type="password" autoComplete="current-password" v-if="!showSignup" 
-        v-model="user.password" name="Password" :placeholder="$t('message.Password')" @keyup="signin">      
-      <input type="password" v-else v-model="user.password" name="Password" :placeholder="$t('message.Password')">
-      <input type="password" v-if="showSignup" v-model="user.confirmPassword" :placeholder="$t('message.ConfirmPassword')">
+      
+      <div class="password-group">
+        <input :type="showPassword ? 'text' : 'password'" v-if="!showSignup" autoComplete="current-password"
+          v-model="user.password" name="Password" :placeholder="$t('message.Password')" @keyup="signin">      
+        <input :type="showPassword ? 'text' : 'password'" v-else 
+          v-model="user.password" name="Password" :placeholder="$t('message.Password')">      
+          <i class="show-hide-icon fa" :class="showPassword ? 'fa-eye-slash' : 'fa-eye'" @click="showHidePassword(false)"></i>
+      </div>
+
+      <div v-if="showSignup" class="password-group">
+        <input :type="showConfirmPassword ? 'text' : 'password'" v-model="user.confirmPassword" :placeholder="$t('message.ConfirmPassword')">
+        <i class="show-hide-icon fa" :class="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'" @click="showHidePassword(true)"></i>
+      </div> 
+
       </form>
       <button v-if="showSignup" @click="signup">{{ $t('message.Register') }}</button>
       <button v-else @click="signin">{{ $t('message.Enter') }}</button>
@@ -40,6 +50,8 @@ export default {
   data: function() {
     return{
       showSignup: false,
+      showPassword: false,
+      showConfirmPassword: false,
       user:{}      
     }
   },
@@ -72,9 +84,18 @@ export default {
           this.showSignup = false
         })
         .catch(showError)
-    },localeChange(evt) {
+    },
+    localeChange(evt) {
       this.setLocale(evt.selectedLocale)
-    }    
+    },
+    showHidePassword(confirmPassword = false){
+      if(!confirmPassword){
+        this.showPassword = !this.showPassword
+      } else {
+        this.showConfirmPassword = !this.showConfirmPassword
+      }
+    }
+
   }
 }
 </script>
@@ -140,6 +161,23 @@ export default {
 
   .locale-dropdown {
     z-index: 1;
+  }
+
+  .auth-modal > form {
+    width: 100%;
+  }
+  
+  .password-group {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;    
+  }
+
+  .show-hide-icon {
+    color: #3336;
+    font-size: 1.4rem;
+    margin-left: 10px;
+    margin-bottom: 15px;
   }
 
 </style>
