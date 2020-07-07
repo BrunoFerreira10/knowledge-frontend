@@ -11,11 +11,19 @@
       <input type="text" autoComplete="username" v-model="user.email" name="email" placeholder="E-mail"> 
       
       <div class="password-group">
-        <input :type="showPassword ? 'text' : 'password'" v-if="!showSignup" autoComplete="current-password"
+        <input id="password-field" :type="showPassword ? 'text' : 'password'" v-if="!showSignup" autoComplete="current-password"
           v-model="user.password" name="Password" :placeholder="$t('message.Password')" @keyup="signin">      
-        <input :type="showPassword ? 'text' : 'password'" v-else 
+        <input id="password-field" :type="showPassword ? 'text' : 'password'" v-else 
           v-model="user.password" name="Password" :placeholder="$t('message.Password')">      
           <i class="show-hide-icon fa" :class="showPassword ? 'fa-eye-slash' : 'fa-eye'" @click="showHidePassword(false)"></i>
+
+        <b-popover :show.sync="isVisiblePasswordHelp" target="password-field" title="Password rules" placement="leftbottom" :disabled="true">
+          Minimum 6 characters. <br>
+          At least one lower case letter. <br>
+          At least one upper case letter. <br>
+          At least one number. <br>
+        </b-popover>
+
       </div>
 
       <div v-if="showSignup" class="password-group">
@@ -24,8 +32,11 @@
       </div> 
 
       </form>
-      <button v-if="showSignup" @click="signup">{{ $t('message.Register') }}</button>
-      <button v-else @click="signin">{{ $t('message.Enter') }}</button>
+      <div class="button-group">
+        <b-button pill :pressed="false" v-if="showSignup" @click="signup">{{ $t('message.Register') }}</b-button>
+        <b-button active-class="button-active" pill v-else @click="signin">{{ $t('message.Enter') }}</b-button>        
+        <i v-if="showSignup" class="password-info-icon fa fa-info-circle" @click="showPasswordHelp()"></i>
+      </div>
 
       <a href @click.prevent="showSignup = !showSignup">
         <span v-if="showSignup">{{ $t('message.AlreadyRegisteredAccessLogin') }}</span>
@@ -34,7 +45,7 @@
                   
     </div>
   </div>
-</template>
+</template> 
 
 <script>
 import { baseApiUrl, showError, userKey } from '@/global'
@@ -52,6 +63,7 @@ export default {
       showSignup: false,
       showPassword: false,
       showConfirmPassword: false,
+      isVisiblePasswordHelp: false,
       user:{}      
     }
   },
@@ -94,6 +106,12 @@ export default {
       } else {
         this.showConfirmPassword = !this.showConfirmPassword
       }
+    },
+    showPasswordHelp() {      
+      this.isVisiblePasswordHelp = true
+      setTimeout(()=>{
+        this.isVisiblePasswordHelp = false
+      },7000)
     }
 
   }
@@ -134,16 +152,15 @@ export default {
     outline: none;
   }
 
-  .auth-modal button {
-    align-self: flex-end;
-    background-color: #03588C;
+  .auth-modal .button-group button {
+    background-color: #006bb5;
     color: #FFF;
     padding: 5px 15px;
   }
 
-  .auth-modal button:active {
-    background-color: #03588Ccc;
-  }
+  .auth-modal .button-group button:hover {    
+    background-color: #006bb5dd;    
+  }   
 
   .auth-modal a {
     margin-top: 35px;
@@ -168,6 +185,7 @@ export default {
   }
   
   .password-group {
+    position: relative;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;    
@@ -178,9 +196,27 @@ export default {
     position: absolute;
     color: #3336;
     font-size: 1.4rem;
-    top: 5px;
-    right: 10px;
     z-index: 1;
+    right: 5px;
+    top: 5px;
+  }
+
+  .auth-modal .button-group {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;    
+  }
+
+  .password-info-icon{
+    font-size: 2rem;
+    color: #3337;    
+    margin-left: 5px;
+  }
+
+  .password-info-icon:hover{
+    color: #333c; 
   }
 
 </style>
