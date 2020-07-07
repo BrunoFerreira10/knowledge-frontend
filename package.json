@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "private": true,
   "scripts": {
     "serve-local": "env NODE_ENV=test-local vue-cli-service serve",
