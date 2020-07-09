@@ -7,7 +7,9 @@
       </b-col>
     </b-row>
 
-    
+    <button class="fbtn fbtn-add">
+      <i class="fa fa-plus"></i>
+    </button>
 
     <b-form v-if="mode !== 'list'">
       <input type="hidden" id="article-id" v-model="article.id" />
@@ -275,6 +277,7 @@ export default {
 .b-table > tbody > tr > td {
   font-size: 0.9rem;
 }
+
 
 
 

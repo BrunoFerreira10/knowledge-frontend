@@ -84,4 +84,24 @@ body {
   width: 100%;  
   z-index: 10;
 }
+
+.fbtn {
+  position: fixed;
+  bottom: 25px;
+  right: 35px;
+  border: none;
+  border-radius: 100%;  
+  background-color: #333e;
+  color: #FFF;
+  height: 60px;
+  width: 60px;
+  box-shadow: 0 10px 10px rgba(0,0,0,.2), 0 4px 4px rgba(0,0,0,.15);  
+  outline: none;
+  z-index: 999;
+}
+
+.fbtn > i {
+  font-size: 1.5rem;
+  font-weight: 100;
+}
 </style>
