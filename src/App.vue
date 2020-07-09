@@ -62,7 +62,7 @@ body {
 
   grid-template-areas:
     "header header"
-    "menu content"
+    "content content"
     "footer footer";
 }
 
