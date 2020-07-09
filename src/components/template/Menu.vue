@@ -62,12 +62,15 @@ export default {
   .menu {
     grid-area: menu;
     background: linear-gradient(to right, #232526, #414345);
-
+    
+    position: absolute;
+    top: 45px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;    
-    width: 300px;
+    width: 260px;
     height: 100%;
+    z-index: 10;    
   }
 
   .menu .tree-anchor,
@@ -77,7 +80,7 @@ export default {
   }
 
   .menu .tree-anchor{
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   .menu .tree-node:not(.selected) > .tree-content:hover {
@@ -89,7 +92,7 @@ export default {
   }   
 
   .tree-arrow.has-child { 
-    filter: brightness(2);
+    filter: brightness(2);    
   }
   
   .menu .menu-filter {
@@ -104,12 +107,12 @@ export default {
   .menu .menu-filter i {
     color: #AAA;
     margin-right: 10px;
-    font-size: 1.0rem;
+    font-size: 0.8rem;
   }
 
   .menu input {
     color: #CCC;
-    font-size: 1.0rem;
+    font-size: 0.8rem;
     border: 0;
     outline: 0;
     width: 100%;
@@ -118,7 +121,7 @@ export default {
   
   .menu .tree-filter-empty {
     color: #CCC;
-    font-size: 1.0rem;
+    font-size: 0.8rem;
     margin-left: 20px;
     /* WOW */
   }
