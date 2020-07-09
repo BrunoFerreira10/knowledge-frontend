@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "private": true,
   "scripts": {
     "serve-local": "env NODE_ENV=test-local vue-cli-service serve",
@@ -19,6 +19,7 @@
     "liquor-tree": "^0.2.70",
     "vue": "^2.6.11",
     "vue-country-flag": "^2.0.1",
+    "vue-fab": "^2.3.1",
     "vue-gravatar": "^1.3.1",
     "vue-i18n": "^8.18.2",
     "vue-mq": "^1.0.1",

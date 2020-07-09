@@ -7,6 +7,8 @@
       </b-col>
     </b-row>
 
+    
+
     <b-form v-if="mode !== 'list'">
       <input type="hidden" id="article-id" v-model="article.id" />
 
@@ -125,11 +127,13 @@
 import axios from "axios"
 import { baseApiUrl, showError } from '@/global'
 import { VueEditor } from "vue2-editor"
+import VueFab from 'vue-fab'
 
 export default {
   name: 'ArticleAdmin',
   components: {
-    VueEditor
+    VueEditor,
+    
   },
   data: function () {
     return {
@@ -146,13 +150,13 @@ export default {
   },
   computed: {
     categoryOptions: function () {
-       let list = this.categories.map(item => {
+       let list = this.categories.data.map(item => {
          return { ...item, value: item.id, text: item.path }
        })       
        return list
      },
      userOptions: function () {
-       let list = this.users.map(item => {
+       let list = this.users.data.map(item => {
          return { ...item, value: item.id, text: `${item.name} - ${item.email}` }
        })       
        return list
