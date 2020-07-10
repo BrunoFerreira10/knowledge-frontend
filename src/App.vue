@@ -42,6 +42,13 @@ export default {
 </script>
 
 <style>
+:root {
+  --kb--baseblue1-solid: "#03588C";
+  --kb--baseblue1-transp: "#03588CEE";
+  --kb--baseblue2-solid: "#006bb5";
+  --kb--baseblue2-transp: "#006bb5EE";
+}
+
 * {
   font-family: "Lato", sans-serif;
 }
@@ -89,19 +96,50 @@ body {
   position: fixed;
   bottom: 25px;
   right: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
   border: none;
-  border-radius: 100%;  
-  background-color: #333e;
-  color: #FFF;
-  height: 60px;
-  width: 60px;
+  border-radius: 100%;    
+  height: 50px;
+  width: 50px;
   box-shadow: 0 10px 10px rgba(0,0,0,.2), 0 4px 4px rgba(0,0,0,.15);  
   outline: none;
   z-index: 999;
 }
 
-.fbtn > i {
-  font-size: 1.5rem;
-  font-weight: 100;
+.fbtn.fbtn-add {
+  background-color: #03588C;
+  color: #FFF;
 }
+
+.fbtn.fbtn-save {
+  background-color: #28a745;
+  color: #FFF;
+  right: 95px;
+}
+
+.fbtn.fbtn-update {
+  background-color: #ffc107;
+  color: #212529;    
+  right: 95px;
+}
+
+.fbtn.fbtn-delete {
+  background-color: #dc3545;
+  color: #FFF;
+  right: 95px;
+}
+
+.fbtn.fbtn-cancel {
+  background-color: #6c757d;
+  color: #FFF;
+}
+
+.fbtn > i {
+  font-size: 1.5rem;  
+}
+
 </style>
