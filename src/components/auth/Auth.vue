@@ -195,12 +195,14 @@ export default {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;    
+    position: relative;
   }
 
   .show-hide-icon {
     position: absolute;
     color: #3336;
     font-size: 1.4rem;
+    z-index: 1;
     right: 5px;
     top: 5px;
   }
@@ -220,7 +222,7 @@ export default {
   }
 
   .password-info-icon:hover{
-    color: #333c;        
+    color: #333c; 
   }
 
 </style>
