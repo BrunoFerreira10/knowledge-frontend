@@ -110,6 +110,10 @@ body {
   z-index: 999;
 }
 
+.fbtn:focus {
+  outline: none;  
+}
+
 .fbtn.fbtn-add {
   background-color: #03588C;
   color: #FFF;
