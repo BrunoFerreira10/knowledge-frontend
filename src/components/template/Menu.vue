@@ -63,7 +63,7 @@ export default {
     grid-area: menu;
     background: linear-gradient(to right, #232526, #414345);
     
-    position: absolute;
+    position: fixed;
     top: 45px;
     display: flex;
     flex-direction: column;
