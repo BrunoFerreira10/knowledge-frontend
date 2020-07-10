@@ -1,11 +1,25 @@
 <template>
   <div class="category-admin">
 
-    <b-row>
-      <b-col xs="12">
-        <b-button v-if="mode === 'list'" variant="primary" @click="mode = 'save'">{{ $t('message.Add') }}</b-button>        
-      </b-col>
-    </b-row>
+    <button class="fbtn fbtn-add" v-if="mode === 'list'" @click="mode = 'save'">
+      <i class="material-icons">add</i>
+    </button>
+
+    <button class="fbtn fbtn-save" v-if="mode === 'save'" @click="save">
+      <i class="material-icons">save</i>
+    </button>
+
+    <button class="fbtn fbtn-update" v-if="mode === 'edit'" @click="save">
+      <i class="material-icons">cached</i>
+    </button>
+
+    <button class="fbtn fbtn-delete" v-if="mode === 'remove'" @click="remove">
+      <i class="material-icons">delete</i>
+    </button>
+
+    <button class="fbtn fbtn-cancel" v-if="mode !== 'list'" @click="reset">
+      <i class="material-icons">clear</i>
+    </button> 
 
     <b-form v-if="mode !== 'list'">
       <input type="hidden" id="category-id" v-model="modelItem.id" />
@@ -44,18 +58,10 @@
           </b-form-group>
         </b-col>
       </b-row>
-
-      <b-row>
-        <b-col xs="12">
-          <b-button v-if="mode === 'save'" variant="primary" @click="save">{{ $t('message.Save') }}</b-button>
-          <b-button v-if="mode === 'edit'" variant="primary" @click="save">{{ $t('message.Update') }}</b-button>
-          <b-button v-if="mode === 'remove'" variant="danger" @click="remove">{{ $t('message.Delete') }}</b-button>
-          <b-button variant="secondary" @click="reset" class="ml-2">{{ $t('message.Cancel') }}</b-button>
-        </b-col>
-      </b-row>
+      
     </b-form>
     
-    <b-table hover striped :items="modelList" :fields="fields">
+    <b-table v-if="mode === 'list'" hover striped :items="modelList" :fields="fields">
       <template v-slot:cell(actions)="data">
         <div class="action-buttons">
           <b-button variant="warning" @click="loadModelItem(data.item, 'edit')">
@@ -67,7 +73,7 @@
         </div>
       </template>
     </b-table>
-    <b-pagination class="paginator" size="md" v-model="page" :total-rows="count" :per-page="limit" />
+    <b-pagination v-if="mode === 'list'" class="paginator" size="md" v-model="page" :total-rows="count" :per-page="limit" />
   </div>
 </template>
 
