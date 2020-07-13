@@ -162,14 +162,12 @@ export default {
       [
         { key: 'name', label: this.$i18n.t('message.Name'), sortable: true },
         { key: 'admin', label: 'Admin', sortable: true,
-          formatter: value => value ? 'Yes' : 'No'},
-        { key: 'actions', label: this.$i18n.t('message.Actions') }
+          formatter: value => value ? 'Yes' : 'No'},        
       ] : [
         { key: 'name', label: this.$i18n.t('message.Name'), sortable: true },
         { key: 'email', label: 'E-mail', sortable: true },
         { key: 'admin', label: 'Admin', sortable: true,
-          formatter: value => value ? 'Yes' : 'No'},
-        { key: 'actions', label: this.$i18n.t('message.Actions') }
+          formatter: value => value ? 'Yes' : 'No'},        
       ]
     },
     onRowSelected(items){
