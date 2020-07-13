@@ -14,6 +14,14 @@
     </button>
 
     <button class="fbtn fbtn-delete" v-if="mode === 'remove'" @click="remove">
+      <i class="material-icons">delete_forever</i>
+    </button>
+
+    <button class="fbtn fbtn-edititem" v-if="mode === 'itemSelected'" @click="loadUser(selectedItem, 'edit')">
+      <i class="material-icons">edit</i>
+    </button>
+
+    <button class="fbtn fbtn-deleteitem" v-if="mode === 'itemSelected'" @click="loadUser(selectedItem, 'remove')">
       <i class="material-icons">delete</i>
     </button>
 
@@ -21,7 +29,7 @@
       <i class="material-icons">clear</i>
     </button> 
 
-    <b-form v-if="mode !== 'list'">
+    <b-form v-if="mode !== 'list' && mode !== 'itemSelected'">
       <input type="hidden" id="user-id" v-model="user.id" />
 
       <b-row>
@@ -85,17 +93,8 @@
       
     </b-form>
 
-    <b-table v-if="mode === 'list'" hover striped :items="users" :fields="fields">
-      <template v-slot:cell(actions)="data">
-        <div class="actions-buttons">
-          <b-button class="mr-2" variant="warning" @click="loadUser(data.item, 'edit')">
-            <i class="fa fa-pencil"></i>
-          </b-button>
-          <b-button variant="danger" @click="loadUser(data.item, 'remove')">
-            <i class="fa fa-trash"></i>
-          </b-button>
-        </div>
-      </template>
+    <b-table v-if="mode === 'list' || mode ==='itemSelected'" hover striped selectable select-mode="single"
+      :items="users" :fields="fields" @row-selected="onRowSelected">      
     </b-table>
     <b-pagination v-if="mode === 'list'" class="paginator" size='md' v-model="page" :total-rows="count" :per-page="limit" />
   </div>
@@ -115,7 +114,8 @@ export default {
       page: 1,
       count: 0,
       limit: 0,
-      fields: []
+      fields: [],
+      selectedItem: {}
     }
   },
   methods: {
@@ -130,7 +130,8 @@ export default {
     reset() {
       this.mode = 'list'
       this.user = {},
-        this.loadUsers()
+      this.loadUsers()
+      this.selectedItem = {}
     },
     save() {
       const method = this.user.id ? 'put' : 'post'
@@ -151,7 +152,7 @@ export default {
         })
         .catch(showError)
     },
-    loadUser(user, mode = 'save') {
+    loadUser(user, mode) {
       this.mode = mode
       this.user = { ...user }
       document.documentElement.scrollTop = 0;  
@@ -170,6 +171,10 @@ export default {
           formatter: value => value ? 'Yes' : 'No'},
         { key: 'actions', label: this.$i18n.t('message.Actions') }
       ]
+    },
+    onRowSelected(items){
+      this.selectedItem = items[0] || null
+      this.mode = 'itemSelected'
     }
   },
   mounted() {

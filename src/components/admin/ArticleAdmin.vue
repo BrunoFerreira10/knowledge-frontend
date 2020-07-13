@@ -14,6 +14,14 @@
     </button>
 
     <button class="fbtn fbtn-delete" v-if="mode === 'remove'" @click="remove">
+      <i class="material-icons">delete_forever</i>
+    </button>
+
+    <button class="fbtn fbtn-edititem" v-if="mode === 'itemSelected'" @click="loadArticle(selectedItem, 'edit')">
+      <i class="material-icons">edit</i>
+    </button>
+
+    <button class="fbtn fbtn-deleteitem" v-if="mode === 'itemSelected'" @click="loadArticle(selectedItem, 'remove')">
       <i class="material-icons">delete</i>
     </button>
 
@@ -21,7 +29,7 @@
       <i class="material-icons">clear</i>
     </button>   
 
-    <b-form v-if="mode !== 'list'">
+    <b-form v-if="mode !== 'list' && mode !== 'itemSelected'">
       <input type="hidden" id="article-id" v-model="article.id" />
 
       <b-row>
@@ -110,17 +118,8 @@
       
     </b-form>
     
-    <b-table v-if="mode === 'list'" hover striped :items="articles" :fields="fields">
-      <template v-slot:cell(actions)="data">
-        <div class="action-buttons">
-          <b-button variant="warning" @click="loadArticle(data.item, 'edit')">
-            <i class="fa fa-pencil"></i>
-          </b-button>
-          <b-button class="ml-2" variant="danger" @click="loadArticle(data.item, 'remove')">
-            <i class="fa fa-trash"></i>
-          </b-button>
-        </div>
-      </template>
+    <b-table v-if="mode === 'list' || mode ==='itemSelected'" hover striped selectable select-mode="single"
+      :items="articles" :fields="fields" @row-selected="onRowSelected">      
     </b-table>
     <b-pagination v-if="mode === 'list'" class="paginator" size="md" v-model="page" :total-rows="count" :per-page="limit" />    
   </div>
@@ -148,7 +147,8 @@ export default {
       page: 1,
       limit: 0,
       count: 0,
-      fields: []
+      fields: [],
+      selectedItem: {}
     }
   },
   computed: {
@@ -200,7 +200,8 @@ export default {
     reset() {
       this.article = {},
       this.loadArticles()
-      this.mode = 'list'      
+      this.mode = 'list'
+      this.selectedItem= {}
     },
     save() {
       const method = this.article.id ? 'put' : 'post'
@@ -227,12 +228,15 @@ export default {
       this.fields = this.$mq === 'xs' || this.$mq === 'sm'  ?
       [
         { key: 'name', label: this.$i18n.t('message.Name'), sortable: true },        
-        { key: 'actions', label: this.$i18n.t('message.Actions') }
+        { key: 'description', label: this.$i18n.t('message.Description'), sortable: true},               
       ] : [        
         { key: 'name', label: this.$i18n.t('message.Name'), sortable: true },
-        { key: 'description', label: this.$i18n.t('message.Description'), sortable: true},
-        { key: 'actions', label: this.$i18n.t('message.Actions') }
+        { key: 'description', label: this.$i18n.t('message.Description'), sortable: true},        
       ]
+    },
+    onRowSelected(items){
+      this.selectedItem = items[0] || null
+      this.mode = 'itemSelected'
     }
   },
   mounted() {
