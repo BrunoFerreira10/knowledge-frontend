@@ -131,7 +131,19 @@ body {
   right: 95px;
 }
 
+.fbtn.fbtn-edititem {
+  background-color: #ffc107;
+  color: #212529;    
+  right: 155px;
+}
+
 .fbtn.fbtn-delete {
+  background-color: #dc3545;
+  color: #FFF;
+  right: 95px;
+}
+
+.fbtn.fbtn-deleteitem {
   background-color: #dc3545;
   color: #FFF;
   right: 95px;
