@@ -149,12 +149,10 @@ export default {
     setFields() {
       this.fields = this.$mq === 'xs' || this.$mq === 'sm'  ?
         [
-          { key: 'path', label: this.$i18n.t('message.Path'), sortable: true },
-          { key: 'actions', label: this.$i18n.t('message.Actions') }
+          { key: 'path', label: this.$i18n.t('message.Path'), sortable: true },          
         ] : [
           { key: 'name', label: this.$i18n.t('message.Name'), sortable: true },
-          { key: 'path', label: this.$i18n.t('message.Path'), sortable: true },
-          { key: 'actions', label: this.$i18n.t('message.Actions') }
+          { key: 'path', label: this.$i18n.t('message.Path'), sortable: true },          
         ]
     },
     onRowSelected(items){
