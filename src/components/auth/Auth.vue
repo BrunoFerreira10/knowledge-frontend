@@ -7,29 +7,30 @@
         {{ showSignup ? $t('message.Register') : 'Login'}}
       </div>
       <form>
-      <input type="text" v-if="showSignup" v-model="user.name" :placeholder="$t('message.Name')">
-      <input type="text" autoComplete="username" v-model="user.email" name="email" placeholder="E-mail"> 
-      
-      <div class="password-group">
-        <input id="password-field" :type="showPassword ? 'text' : 'password'" v-if="!showSignup" autoComplete="current-password"
-          v-model="user.password" name="Password" :placeholder="$t('message.Password')" @keyup="signin">      
-        <input id="password-field" :type="showPassword ? 'text' : 'password'" v-else 
-          v-model="user.password" name="Password" :placeholder="$t('message.Password')">      
-          <i class="show-hide-icon fa" :class="showPassword ? 'fa-eye-slash' : 'fa-eye'" @click="showHidePassword(false)"></i>
+        <input type="text" v-if="showSignup" v-model="user.name" :placeholder="$t('message.Name')" spellcheck="false">
+        <input type="text" autoComplete="username" v-model="user.email" name="email" placeholder="E-mail" spellcheck="false"> 
+        
+        <div class="password-group">
+          <input id="password-field" :type="showPassword ? 'text' : 'password'" v-if="!showSignup" autoComplete="current-password"
+            v-model="user.password" name="Password" :placeholder="$t('message.Password')" @keyup="signin" spellcheck="false">      
+          <input id="password-field" :type="showPassword ? 'text' : 'password'" v-else 
+            v-model="user.password" name="Password" :placeholder="$t('message.Password')" spellcheck="false">      
+            <i class="show-hide-icon fa" :class="showPassword ? 'fa-eye-slash' : 'fa-eye'" @click="showHidePassword(false)"></i>
 
-        <b-popover :show.sync="isVisiblePasswordHelp" target="password-field" title="Password rules" placement="leftbottom" :disabled="true">
-          Minimum 6 characters. <br>
-          At least one lower case letter. <br>
-          At least one upper case letter. <br>
-          At least one number. <br>
-        </b-popover>
+          <b-popover :show.sync="isVisiblePasswordHelp" target="password-field" title="Password rules" placement="leftbottom" :disabled="true">
+            Minimum 6 characters. <br>
+            At least one lower case letter. <br>
+            At least one upper case letter. <br>
+            At least one number. <br>
+          </b-popover>
 
-      </div>
+        </div>
 
-      <div v-if="showSignup" class="password-group">
-        <input :type="showConfirmPassword ? 'text' : 'password'" v-model="user.confirmPassword" :placeholder="$t('message.ConfirmPassword')">
-        <i class="show-hide-icon fa" :class="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'" @click="showHidePassword(true)"></i>
-      </div> 
+        <div v-if="showSignup" class="password-group">
+          <input :type="showConfirmPassword ? 'text' : 'password'" v-model="user.confirmPassword" 
+            :placeholder="$t('message.ConfirmPassword')" spellcheck="false">
+          <i class="show-hide-icon fa" :class="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'" @click="showHidePassword(true)"></i>
+        </div> 
 
       </form>
       <div class="button-group">
@@ -151,11 +152,25 @@ export default {
   }
 
   .auth-modal input {
-    border: 1px solid #BBB;
+    border: none;
+    border-bottom: 1px solid #CCC; 
     width: 100%;
     margin-bottom: 15px;
     padding: 3px 8px;
     outline: none;
+    color: #777;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus, 
+  input:-webkit-autofill:active  {
+    box-shadow: none;
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+  }
+
+  input:-webkit-autofill {
+    -webkit-text-fill-color: #777 !important;
   }
 
   .auth-modal .button-group button {
